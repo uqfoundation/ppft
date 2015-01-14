@@ -16,11 +16,12 @@ Only in pp-1.6.4: ppworker.py
 Only in ppft: python2
 Only in ppft: python3
 diff pp-1.6.4/MANIFEST.in ppft/MANIFEST.in
-6c6
+6,7c6
 < include README
+< include python-restlib.spec
 ---
 > include README.md
-15a16,17
+15a15,16
 > recursive-include python2 *
 > recursive-include python3 *
 diff pp-1.6.4/setup.py ppft/setup.py
