@@ -33,7 +33,7 @@ diff pp-1.6.4/setup.py ppft/setup.py
 > import os, os.path
 > pyversion = sys.version_info[0]
 > pkgdir = 'python%s' % pyversion
-12c14,27
+12c14,30
 < from pp import version as VERSION
 ---
 > try:
@@ -43,14 +43,17 @@ diff pp-1.6.4/setup.py ppft/setup.py
 >     from distutils.core import setup
 >     has_setuptools = False
 > 
+> stable_version = '1.6.4.5'
+> target_version = '1.6.4.6'
+> is_release = False
+> VERSION = stable_version if is_release else target_version + '.dev'
 > # os.chdir(pkgdir)
 > # sys.path.insert(0, '.')
 > # from ppcommon import __version__ as VERSION
-> VERSION = '1.6.4.5'
 > # sys.path.pop(0)
 > # if os.path.exists('ppcommon.pyc'): os.remove('ppcommon.pyc')
 > # os.chdir('..')
-26,40c41,57
+26,40c44,60
 < setup(
 <         name="pp",
 <         url="http://www.parallelpython.com",
@@ -84,7 +87,7 @@ diff pp-1.6.4/setup.py ppft/setup.py
 >         "long_description" : LONG_DESCRIPTION,
 >         "license" : "BSD-like",
 >         "classifiers" : [
-50c67,79
+50c70,82
 < )
 ---
 > }

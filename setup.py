@@ -18,10 +18,13 @@ except ImportError:
     from distutils.core import setup
     has_setuptools = False
 
+stable_version = '1.6.4.5'
+target_version = '1.6.4.6'
+is_release = False
+VERSION = stable_version if is_release else target_version + '.dev'
 # os.chdir(pkgdir)
 # sys.path.insert(0, '.')
 # from ppcommon import __version__ as VERSION
-VERSION = '1.6.4.5'
 # sys.path.pop(0)
 # if os.path.exists('ppcommon.pyc'): os.remove('ppcommon.pyc')
 # os.chdir('..')

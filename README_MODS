@@ -1,13 +1,24 @@
+### VERSION 1.6.4.6 ###
+# see MODS*.diff for full patch (against 1.6.4)
+# made these functional changes
+ - ...TBD...
+
+# made these "build" changes
+ - edited pp*py to have version = '1.6.4.6'
+ - ...TBD...
+
+
+
 ### VERSION 1.6.4.5 ###
+# see MODS*.diff for full patch (against 1.6.4)
 # made these "build" changes
  - edited pp*py to have version = '1.6.4.5'
  - redistribute package as 'ppft'
 
-# see MODS*.diff for full patch (against 1.6.4)
-
 
 
 ### VERSION 1.6.4.4 ###
+# see MODS*.diff for full patch (against 1.6.4)
 # made these functional changes
  - every file has __version__
 
@@ -16,20 +27,18 @@
  - python2-only code in python2 (ported from 1.6.4.1)
  - python2/python3 code in python3 (split, due to minor functional bugs)
 
-# see MODS*.diff for full patch (against 1.6.4)
-
 
 
 ### VERSION 1.6.4.3 ###
+# see MODS.diff for full patch (against 1.6.4)
 # made these "build" changes
  - edited pp*py to have version = '1.6.4.3'
  - build with setuptools if available
 
-# see MODS.diff for full patch (against 1.6.4)
-
 
 
 ### VERSION 1.6.4.2 ###
+# see MODS.diff for full patch (against 1.6.4)
 # made these functional changes
  - picks a random port instead of default port '60000'
 
@@ -38,11 +47,10 @@
  - added dependency 'six' (for python3.x support)
  - added python 3.x support
 
-# see MODS.diff for full patch (against 1.6.4)
-
 
 
 ### VERSION 1.6.4.1 ###
+# see MODS.diff for full patch (against 1.6.4)
 # made these functional changes
  - provide dill as alternate install to cPickle in pp.py and ppworker.py
    . (this allows pp to unpickle with dill)
@@ -56,4 +64,3 @@
  - edited setup.py to use 'pathos' download_url & version number
  - edited ppserver.py to be python2.5 compliant
 
-# see MODS.diff for full patch (against 1.6.4)

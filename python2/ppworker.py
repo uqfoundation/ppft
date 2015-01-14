@@ -39,7 +39,7 @@ except ImportError:
 import pptransport
 
 copyright = "Copyright (c) 2005-2012 Vitalii Vanovschi. All rights reserved"
-__version__ = version = "1.6.4.5"
+__version__ = version = "1.6.4.6"
 
 
 def preprocess(msg):

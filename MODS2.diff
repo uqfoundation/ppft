@@ -30,7 +30,7 @@ diff pp-1.6.4/pp.py ppft/python2/pp.py
 48c64
 < version = "1.6.4"
 ---
-> __version__ = version = "1.6.4.5"
+> __version__ = version = "1.6.4.6"
 352c368
 <                 port = Server.default_port
 ---
@@ -57,12 +57,12 @@ diff pp-1.6.4/ppauto.py ppft/python2/ppauto.py
 40c40
 < version = "1.6.4"
 ---
-> __version__ = version = "1.6.4.5"
+> __version__ = version = "1.6.4.6"
 diff pp-1.6.4/ppcommon.py ppft/python2/ppcommon.py
 36c36
 < version = "1.6.4"
 ---
-> __version__ = version = "1.6.4.5"
+> __version__ = version = "1.6.4.6"
 62a63,115
 > 
 > class portnumber(object):
@@ -123,7 +123,7 @@ diff pp-1.6.4/ppserver.py ppft/python2/ppserver.py
 53c54
 < version = "1.6.4"
 ---
-> __version__ = version = "1.6.4.5"
+> __version__ = version = "1.6.4.6"
 84c85
 <             self.port = self.default_port
 ---
@@ -137,7 +137,7 @@ diff pp-1.6.4/pptransport.py ppft/python2/pptransport.py
 40c40
 < version = "1.6.4"
 ---
-> __version__ = version = "1.6.4.5"
+> __version__ = version = "1.6.4.6"
 diff pp-1.6.4/ppworker.py ppft/python2/ppworker.py
 35c35,38
 < import cPickle as pickle
@@ -149,5 +149,5 @@ diff pp-1.6.4/ppworker.py ppft/python2/ppworker.py
 39c42
 < version = "1.6.4"
 ---
-> __version__ = version = "1.6.4.5"
+> __version__ = version = "1.6.4.6"
 Only in pp-1.6.4: setup.py
