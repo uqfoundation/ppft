@@ -1,0 +1,153 @@
+Only in pp-1.6.4: AUTHORS
+Only in pp-1.6.4: CHANGELOG
+Only in pp-1.6.4: COPYING
+Only in pp-1.6.4: MANIFEST.in
+Only in pp-1.6.4: PKG-INFO
+Only in pp-1.6.4: README
+Only in pp-1.6.4: doc
+Only in pp-1.6.4: examples
+diff pp-1.6.4/pp.py ppft/python2/pp.py
+42c42,58
+< import cPickle as pickle
+---
+> try:
+>     import dill as pickle
+>     from dill.source import importable
+>     from dill.source import getname
+>     from dill.source import _wrap
+> except ImportError:
+>     import cPickle as pickle
+>     def importable(func): # the original code
+>         #get lines of the source and adjust indent
+>         sourcelines = inspect.getsourcelines(func)[0]
+>         #remove indentation from the first line
+>         sourcelines[0] = sourcelines[0].lstrip()
+>         return "".join(sourcelines)
+>     def getname(obj): # just get __name__
+>         return obj.__name__
+>     def _wrap(f): # do nothing
+>         return f
+48c64
+< version = "1.6.4"
+---
+> __version__ = version = "1.6.4.5"
+352c368
+<                 port = Server.default_port
+---
+>                 port = ppcommon.randomport()
+467c483
+<                 (tid, func.func_name))
+---
+>                 (tid, getname(func)))
+637a654
+>             # should probably just 'try' above, if fail rely on dill.dumps
+639c656
+<                     (funcs[0].func_name, sources, modules),
+---
+>                     (getname(funcs[0]), sources, modules),
+703,707c720
+<             #get lines of the source and adjust indent
+<             sourcelines = inspect.getsourcelines(func)[0]
+<             #remove indentation from the first line
+<             sourcelines[0] = sourcelines[0].lstrip()
+<             self.__sourcesHM[hashf] = "".join(sourcelines)
+---
+>             self.__sourcesHM[hashf] = importable(func)
+diff pp-1.6.4/ppauto.py ppft/python2/ppauto.py
+40c40
+< version = "1.6.4"
+---
+> __version__ = version = "1.6.4.5"
+diff pp-1.6.4/ppcommon.py ppft/python2/ppcommon.py
+36c36
+< version = "1.6.4"
+---
+> __version__ = version = "1.6.4.5"
+62a63,115
+> 
+> class portnumber(object):
+>     '''port selector
+> 
+> Usage:
+>     >>> pick = portnumber(min=1024,max=65535)
+>     >>> print( pick() )
+>     '''
+> 
+>     def __init__(self, min=0, max=64*1024):
+>         '''select a port number from a given range.
+> 
+> The first call will return a random number from the available range,
+> and each subsequent call will return the next number in the range.
+> 
+> Inputs:
+>     min -- minimum port number  [default = 0]
+>     max -- maximum port number  [default = 65536]
+>         '''
+>         self.min = min
+>         self.max = max
+>         self.first = -1
+>         self.current = -1
+>         return
+> 
+>     def __call__(self):
+>         import random
+>         
+>         if self.current < 0: #first call
+>             self.current = random.randint(self.min, self.max)
+>             self.first = self.current
+>             return self.current
+>         else:
+>             self.current += 1
+>             
+>             if self.current > self.max:
+>                 self.current = self.min
+>             if self.current == self.first: 
+>                 raise RuntimeError( 'Range exhausted' )
+>             return self.current
+>         return
+> 
+> 
+> def randomport(min=1024, max=65536):
+>     '''select a random port number
+> 
+> Inputs:
+>     min -- minimum port number  [default = 1024]
+>     max -- maximum port number  [default = 65536]
+>     '''
+>     return portnumber(min, max)()
+> 
+> 
+diff pp-1.6.4/ppserver.py ppft/python2/ppserver.py
+32a33
+> from __future__ import with_statement
+53c54
+< version = "1.6.4"
+---
+> __version__ = version = "1.6.4.5"
+84c85
+<             self.port = self.default_port
+---
+>             self.port = ppcommon.randomport()
+139c140,141
+<                 except socket.error as e: 
+---
+>                 except socket.error: 
+>                     e = sys.exc_info()[1]
+diff pp-1.6.4/pptransport.py ppft/python2/pptransport.py
+40c40
+< version = "1.6.4"
+---
+> __version__ = version = "1.6.4.5"
+diff pp-1.6.4/ppworker.py ppft/python2/ppworker.py
+35c35,38
+< import cPickle as pickle
+---
+> try:
+>     import dill as pickle
+> except ImportError:
+>     import cPickle as pickle
+39c42
+< version = "1.6.4"
+---
+> __version__ = version = "1.6.4.5"
+Only in pp-1.6.4: setup.py

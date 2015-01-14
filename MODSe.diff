@@ -1,0 +1,240 @@
+diff pp-1.6.4/examples/auto_diff.py ppft/examples/auto_diff.py
+15d14
+< 
+54a54
+>     __truediv__ = __div__ # PYTHON 3
+57a58
+>     __rtruediv__ = __rdiv__ # PYTHON 3
+88c89
+<         return sum([float(i%2 and 1 or -1)*x**i/i for i in xrange(1, self.n)])
+---
+>         return sum([float(i%2 and 1 or -1)*x**i/i for i in range(1, self.n)])
+91c92
+< print """Usage: python auto_diff.py [ncpus]
+---
+> print("""Usage: python auto_diff.py [ncpus]
+94c95
+< """
+---
+> """)
+109c110
+< print "Starting pp with", job_server.get_ncpus(), "workers"
+---
+> print("Starting pp with %s workers" % job_server.get_ncpus())
+124c125
+<     print "t_log(%lf) = %lf, t_log'(%lf) = %lf" % (x, val.x, x, val.dx)
+---
+>     print("t_log(%lf) = %lf, t_log'(%lf) = %lf" % (x, val.x, x, val.dx))
+diff pp-1.6.4/examples/callback.py ppft/examples/callback.py
+12c12,15
+< import thread
+---
+> try:
+>     import _thread as thread
+> except ImportError:
+>     import thread
+38c41
+<     for x in xrange(start, end):
+---
+>     for x in range(start, end):
+46c49
+< print """Usage: python callback.py [ncpus]
+---
+> print("""Usage: python callback.py [ncpus]
+49c52
+< """
+---
+> """)
+56c59
+< step = (end - start) / parts + 1
+---
+> step = int((end - start) / parts + 1)
+71c74
+< print "Starting pp with", job_server.get_ncpus(), "workers"
+---
+> print("Starting pp with %s workers" % job_server.get_ncpus())
+80c83
+< for index in xrange(parts):
+---
+> for index in range(parts):
+93c96
+< print "Partial sum is", sum.value, "| diff =", math.log(2) - sum.value
+---
+> print("Partial sum is %s | diff = %s" % (sum.value, math.log(2) - sum.value))
+diff pp-1.6.4/examples/dynamic_ncpus.py ppft/examples/dynamic_ncpus.py
+19c19
+<     for x in xrange(start, end):
+---
+>     for x in range(start, end):
+26,27c26,27
+< print """Usage: python dynamic_ncpus.py"""
+< print
+---
+> print("""Usage: python dynamic_ncpus.py""")
+> print("")
+34c34
+< step = (end - start) / parts + 1
+---
+> step = int((end - start) / parts + 1)
+45,46c45,46
+<     print "Starting ", job_server.get_ncpus(), " workers"
+<     for index in xrange(parts):
+---
+>     print("Starting pp with %s workers" % job_server.get_ncpus())
+>     for index in range(parts):
+60c60
+<     print "Partial sum is", part_sum1, "| diff =", math.log(2) - part_sum1
+---
+>     print("Partial sum is %s | diff = %s" % (part_sum1, math.log(2) - part_sum1))
+62,63c62,63
+<     print "Time elapsed: ", time.time() - start_time, "s"
+<     print
+---
+>     print("Time elapsed:  %s s" % (time.time() - start_time))
+>     print("")
+diff pp-1.6.4/examples/quicksort.py ppft/examples/quicksort.py
+10c10,15
+< 
+---
+> try:
+>     callable(min)
+> except NameError:
+>     def callable(x):
+>         import collections
+>         return isinstance(x, collections.Callable)
+22c27
+< print """Usage: python quicksort.py [ncpus]
+---
+> print("""Usage: python quicksort.py [ncpus]
+25c30
+< """
+---
+> """)
+40c45
+< print "Starting pp with", job_server.get_ncpus(), "workers"
+---
+> print("Starting pp with %s workers" % job_server.get_ncpus())
+44c49
+< for i in xrange(n):
+---
+> for i in range(n):
+65c70
+< print "first 30 numbers in increasing order:", output[:30]
+---
+> print("first 30 numbers in increasing order: %s" % output[:30])
+diff pp-1.6.4/examples/reverse_md5.py ppft/examples/reverse_md5.py
+10c10
+< import md5
+---
+> import hashlib
+11a12,17
+> if sys.version_info[0] >= 3:
+>     def b_(x):
+>         return x.encode('UTF-8')
+> else:
+>     def b_(x):
+>         return x
+15c21
+<     """Calculates md5 of the integerss between 'start' and 'end' and
+---
+>     """Calculates md5 of the integers between 'start' and 'end' and
+17,18c23,24
+<     for x in xrange(start, end):
+<         if md5.new(str(x)).hexdigest() == hash:
+---
+>     for x in range(start, end):
+>         if hashlib.md5(b_(str(x))).hexdigest() == hash:
+22c28
+< print """Usage: python reverse_md5.py [ncpus]
+---
+> print("""Usage: python reverse_md5.py [ncpus]
+25c31
+< """
+---
+> """)
+40c46
+< print "Starting pp with", job_server.get_ncpus(), "workers"
+---
+> print("Starting pp with %s workers" % job_server.get_ncpus())
+43,44c49,50
+< hash = md5.new("1829182").hexdigest()
+< print "hash =", hash
+---
+> hash = hashlib.md5(b_("1829182")).hexdigest()
+> print("hash = %s" % hash)
+54c60
+< step = (end - start) / parts + 1
+---
+> step = int((end - start) / parts + 1)
+57c63
+< for index in xrange(parts):
+---
+> for index in range(parts):
+65,66c71,72
+<     # ("md5",) - tuple with module names which must be imported before
+<     # md5test execution
+---
+>     # ("hashlib", "_hashlib") - tuple with module names which must be
+>     # imported before md5test execution
+70c76
+<             (), ("md5", )))
+---
+>             (), ("hashlib", "_hashlib")))
+80c86
+<     print "Reverse md5 for", hash, "is", result
+---
+>     print("Reverse md5 for %s is %s" % (hash, result))
+82c88
+<     print "Reverse md5 for", hash, "has not been found"
+---
+>     print("Reverse md5 for %s has not been found" % hash)
+diff pp-1.6.4/examples/sum_primes.py ppft/examples/sum_primes.py
+32c32
+<     return sum([x for x in xrange(2, n) if isprime(x)])
+---
+>     return sum([x for x in range(2, n) if isprime(x)])
+35c35
+< print """Usage: python sum_primes.py [ncpus]
+---
+> print("""Usage: python sum_primes.py [ncpus]
+37c37
+<     if omitted it will be set to the number of processors in the system"""
+---
+>     if omitted it will be set to the number of processors in the system""")
+51c51
+< print "Starting pp with", job_server.get_ncpus(), "workers"
+---
+> print("Starting pp with %s workers" % job_server.get_ncpus())
+68c68
+< print "Sum of primes below 100 is", result
+---
+> print("Sum of primes below 100 is %s" % result)
+77c77
+<     print "Sum of primes below", input, "is", job()
+---
+>     print("Sum of primes below %s is %s" % (input, job()))
+diff pp-1.6.4/examples/sum_primes_functor.py ppft/examples/sum_primes_functor.py
+31c31
+<     return sum([x for x in xrange(2,n) if isprime(x)])
+---
+>     return sum([x for x in range(2,n) if isprime(x)])
+34c34
+< print """Usage: python sum_primes.py [ncpus]
+---
+> print("""Usage: python sum_primes.py [ncpus]
+37c37
+< """
+---
+> """)
+52c52
+< print "Starting pp with", job_server.get_ncpus(), "workers"
+---
+> print("Starting pp with %s workers" % job_server.get_ncpus())
+74c74
+< print "Sum of primes below 100 is", result
+---
+> print("Sum of primes below 100 is %s" % result)
+81c81
+<     print "Sum of primes below", input, "is", job()
+---
+>     print("Sum of primes below %s is %s" % (input, job()))

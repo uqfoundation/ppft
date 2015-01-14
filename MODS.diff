@@ -1,0 +1,101 @@
+Only in ppft: MODS.diff
+Only in ppft: MODS2.diff
+Only in ppft: MODS3.diff
+Only in ppft: MODSe.diff
+Only in pp-1.6.4: README
+Only in ppft: README.md
+Only in ppft: README_MODS
+Common subdirectories: pp-1.6.4/doc and ppft/doc
+Common subdirectories: pp-1.6.4/examples and ppft/examples
+Only in pp-1.6.4: pp.py
+Only in pp-1.6.4: ppauto.py
+Only in pp-1.6.4: ppcommon.py
+Only in pp-1.6.4: ppserver.py
+Only in pp-1.6.4: pptransport.py
+Only in pp-1.6.4: ppworker.py
+Only in ppft: python2
+Only in ppft: python3
+diff pp-1.6.4/MANIFEST.in ppft/MANIFEST.in
+6c6
+< include README
+---
+> include README.md
+15a16,17
+> recursive-include python2 *
+> recursive-include python3 *
+diff pp-1.6.4/setup.py ppft/setup.py
+9,10c9,12
+< import os.path
+< from distutils.core import setup
+---
+> import sys
+> import os, os.path
+> pyversion = sys.version_info[0]
+> pkgdir = 'python%s' % pyversion
+12c14,27
+< from pp import version as VERSION
+---
+> try:
+>     from setuptools import setup
+>     has_setuptools = True
+> except ImportError:
+>     from distutils.core import setup
+>     has_setuptools = False
+> 
+> # os.chdir(pkgdir)
+> # sys.path.insert(0, '.')
+> # from ppcommon import __version__ as VERSION
+> VERSION = '1.6.4.5'
+> # sys.path.pop(0)
+> # if os.path.exists('ppcommon.pyc'): os.remove('ppcommon.pyc')
+> # os.chdir('..')
+26,40c41,57
+< setup(
+<         name="pp",
+<         url="http://www.parallelpython.com",
+<         version=VERSION,
+<         download_url="http://www.parallelpython.com/downloads/pp/pp-%s.zip" % (
+<             VERSION),
+<         author="Vitalii Vanovschi",
+<         author_email="support@parallelpython.com",
+<         py_modules=["pp", "ppauto", "ppcommon", "pptransport", "ppworker"],
+<         scripts=["ppserver.py"],
+<         description="Parallel and distributed programming for Python",
+<         platforms=["Windows", "Linux", "Unix"],
+<         long_description=LONG_DESCRIPTION,
+<         license="BSD-like",
+<         classifiers=[
+---
+> kwds = {
+>         "name" : "ppft",
+>         "url" : "http://www.parallelpython.com",
+>         "version" : VERSION,
+>         "download_url" : "http://dev.danse.us/packages/",
+>         "author" : "Vitalii Vanovschi",
+>         "author_email" : "support@parallelpython.com",
+>         "maintainer" : "Mike McKerns",
+>         "maintainer_email" : "mmckerns@caltech.edu",
+>         "package_dir" : {'': pkgdir},
+>         "py_modules" : ["pp", "ppauto", "ppcommon", "pptransport", "ppworker"],
+>         "scripts" : ["%s/ppserver.py" % pkgdir],
+>         "description" : "Parallel and distributed programming for Python",
+>         "platforms" : ["Windows", "Linux", "Unix"],
+>         "long_description" : LONG_DESCRIPTION,
+>         "license" : "BSD-like",
+>         "classifiers" : [
+50c67,79
+< )
+---
+> }
+> 
+> if has_setuptools:
+>     kwds.update({
+>         "zip_safe" : False,
+>     })
+> if has_setuptools and pyversion > 2:
+>     kwds.update({
+>         "install_requires" : ['six>=1.7.3'],
+>     })
+> 
+> setup(**kwds)
+> 
