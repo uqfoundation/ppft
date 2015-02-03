@@ -21,7 +21,7 @@ except ImportError:
 stable_version = '1.6.4.5'
 target_version = '1.6.4.6'
 is_release = False
-VERSION = stable_version if is_release else target_version + '.dev'
+VERSION = stable_version if is_release else target_version + '.dev0'
 # os.chdir(pkgdir)
 # sys.path.insert(0, '.')
 # from ppcommon import __version__ as VERSION
