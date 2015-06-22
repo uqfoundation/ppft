@@ -1,12 +1,12 @@
-Metadata-Version: 1.0
-Name: pp
-Version: 1.6.4
+Metadata-Version: 1.1
+Name: ppft
+Version: 1.6.4.6.dev0
 Summary: Parallel and distributed programming for Python
 Home-page: http://www.parallelpython.com
-Author: Vitalii Vanovschi
-Author-email: support@parallelpython.com
+Author: Mike McKerns
+Author-email: mmckerns@caltech.edu
 License: BSD-like
-Download-URL: http://www.parallelpython.com/downloads/pp/pp-1.6.4.zip
+Download-URL: http://dev.danse.us/packages/
 Description: 
         Parallel Python module (PP) provides an easy and efficient way to create parallel-enabled applications for SMP computers and clusters. PP module features cross-platform portability and dynamic load balancing. Thus application written with PP will parallelize efficiently even on heterogeneous and multi-platform clusters (including clusters running other application with variable CPU loads). Visit http://www.parallelpython.com for further information.
         
