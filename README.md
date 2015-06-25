@@ -26,12 +26,16 @@ Major Changes
 
 Current Release
 ---------------
-This version is ppft-1.6.4.6.dev (a fork of pp-1.6.4).
+This version is a fork of pp-1.6.4.
 
-The latest released pathos fork of PP is available from::
+The latest stable release of ppft is available from::
+    https://github.com/uqfoundation/ppft/releases
+
+or::
     https://pypi.python.org/pypi/ppft
 
-PP is distributed under a BSD-like license.
+
+PP and ppft are distributed under a BSD-like license.
 
 
 Development Version
