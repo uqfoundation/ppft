@@ -43,7 +43,6 @@ try:
     import dill as pickle
     from dill.source import importable
     from dill.source import getname
-    from dill.source import _wrap
 except ImportError:
     import cPickle as pickle
     def importable(func): # the original code
@@ -54,8 +53,6 @@ except ImportError:
         return "".join(sourcelines)
     def getname(obj): # just get __name__
         return obj.__name__
-    def _wrap(f): # do nothing
-        return f
 import pptransport
 import ppauto
 import ppcommon

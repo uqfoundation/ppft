@@ -46,7 +46,6 @@ try:
     import dill as pickle
     from dill.source import importable
     from dill.source import getname
-    from dill.source import _wrap
 except ImportError:
     try: import cPickle as pickle
     except ImportError: import pickle
@@ -58,8 +57,6 @@ except ImportError:
         return "".join(sourcelines)
     def getname(obj): # just get __name__
         return obj.__name__
-    def _wrap(f): # do nothing
-        return f
 import six
 import pptransport
 import ppauto
