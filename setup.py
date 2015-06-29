@@ -51,7 +51,7 @@ kwds = {
         "maintainer" : "Mike McKerns",
         "maintainer_email" : "mmckerns@caltech.edu",
         "package_dir" : {'': pkgdir},
-        "py_modules" : ["pp", "ppauto", "ppcommon", "pptransport", "ppworker"],
+        "py_modules" : ["ppft", "pp", "ppauto", "ppcommon", "pptransport", "ppworker"],
         "scripts" : ["%s/ppserver.py" % pkgdir],
         "description" : "Parallel and distributed programming for Python",
         "platforms" : ["Windows", "Linux", "Unix"],
