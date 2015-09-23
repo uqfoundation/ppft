@@ -55,6 +55,9 @@ __version__ = version = "1.6.4.6"
 
 LISTEN_SOCKET_TIMEOUT = 20
 
+# compatibility with Jython
+STATS_SIGNAL = 'SIGUSR1' if 'java' not in sys.platform else 'SIGUSR2'
+
 # compatibility with Python 2.6
 try:
     import hashlib
@@ -320,7 +323,7 @@ def print_usage():
     print "-k seconds         : socket timeout in seconds"
     print "-P pid_file        : file to write PID to"
     print
-    print "To print server stats send SIGUSR1 to its main process (unix only). "
+    print "To print server stats send " + STATS_SIGNAL + " to its main process (unix only). "
     print 
     print "Due to the security concerns always use a non-trivial secret key."
     print "Secret key set by -s switch will override secret key assigned by"
@@ -388,13 +391,13 @@ def create_network_server(argv):
     return server    
     
 def signal_handler(signum, stack):
-    """Prints server stats when SIGUSR1 is received (unix only). """
+    """Prints server stats when STATS_SIGNAL is received (unix only). """
     server.print_stats()
 
 if __name__ == "__main__":
     server = create_network_server(sys.argv[1:])
-    if hasattr(signal, "SIGUSR1"):
-      signal.signal(signal.SIGUSR1, signal_handler)
+    if hasattr(signal, STATS_SIGNAL):
+      signal.signal(getattr(signal, STATS_SIGNAL), signal_handler)
     server.listen()
     #have to destroy it here explicitly otherwise an exception
     #comes out in Python 2.4
