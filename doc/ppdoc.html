@@ -164,7 +164,7 @@ with an non-trivial secret key (-s command line argument) which should
 be paired with the matching <em>secret</em> keyword of PP Server class constructor. Since PP 1.5.3 it is possible to set secret key by assigning <strong>pp_secret</strong> variable in the configuration file <strong>.pythonrc.py</strong>
  which should be located in the user home directory (please make this 
 file readable and writable only by user). The key set in .pythonrc.py 
-could be overridden by command line argument (for ppserver.py) and <em>secret</em> keyword (for PP Server class constructor). </p><p>&nbsp;</p><hr><h1 id="COMMANDLINE">&nbsp; ppserver.py stats and PID file example<br></h1><p>To print job execution statistics for ppserver.py send a SIGUSR1 signal to its main process.<br>For instance on UNIX platform following commands will start a server and print its stats:<br><strong>ppserver.py&nbsp; -P /tmp/ppserver.pid </strong></p><p><strong>kill -s SIGUSR1 `cat /tmp/ppserver.pid`</strong><br></p>
+could be overridden by command line argument (for ppserver.py) and <em>secret</em> keyword (for PP Server class constructor). </p><p>&nbsp;</p><hr><h1 id="COMMANDLINE">&nbsp; ppserver.py stats and PID file example<br></h1><p>To print job execution statistics for ppserver.py send a SIGUSR1 signal (SIGUSR2, for jython) to its main process.<br>For instance on UNIX platform following commands will start a server and print its stats:<br><strong>ppserver.py&nbsp; -P /tmp/ppserver.pid </strong></p><p><strong>kill -s SIGUSR1 `cat /tmp/ppserver.pid`</strong><br></p>
 
 			</td>
 		</tr>
