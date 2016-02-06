@@ -17,7 +17,7 @@ import pptransport as transport
 import ppworker as worker
 
 # comment out the following if this is a release
-#__version__ += '.dev0'
+__version__ += '.dev0'
 
 #'''
 #__version__ = __version__.rsplit('.',1)

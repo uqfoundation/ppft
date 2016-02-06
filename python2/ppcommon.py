@@ -33,7 +33,7 @@ forums
 import threading
 
 copyright = "Copyright (c) 2005-2012 Vitalii Vanovschi. All rights reserved"
-__version__ = version = "1.6.4.6"
+__version__ = version = "1.6.4.7"
 
 def start_thread(name,  target,  args=(),  kwargs={},  daemon=True):
     """Starts a thread"""
