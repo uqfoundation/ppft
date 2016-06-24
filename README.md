@@ -1,6 +1,6 @@
 ppft
 ====
-a friendly fork of pp
+distributed and parallel python
 
 About Ppft
 ----------
