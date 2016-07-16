@@ -31,10 +31,10 @@ VERSION = stable_version if is_release else target_version + '.dev0'
 
 
 LONG_DESCRIPTION = """
-Parallel Python module (PP) provides an easy and efficient way to create \
-parallel-enabled applications for SMP computers and clusters. PP module \
+Parallel Python module (`pp`) provides an easy and efficient way to create \
+parallel-enabled applications for SMP computers and clusters. `pp` module \
 features cross-platform portability and dynamic load balancing. Thus \
-application written with PP will parallelize efficiently even on \
+application written with `pp` will parallelize efficiently even on \
 heterogeneous and multi-platform clusters (including clusters running other \
 application with variable CPU loads). Visit http://www.parallelpython.com \
 for further information.
@@ -43,13 +43,12 @@ for further information.
 
 kwds = {
         "name" : "ppft",
-        "url" : "http://www.parallelpython.com",
+        "url" : "http://www.cacr.caltech.edu/~mmckerns",
         "version" : VERSION,
         "download_url" : "http://dev.danse.us/packages/",
-        "author" : "Vitalii Vanovschi",
-        "author_email" : "support@parallelpython.com",
+        "author" : "Mike McKerns",
         "maintainer" : "Mike McKerns",
-        "maintainer_email" : "mmckerns@caltech.edu",
+        "maintainer_email" : "mmckerns@uqfoundation.org",
         "package_dir" : {'': pkgdir},
         "py_modules" : ["ppft", "pp", "ppauto", "ppcommon", "pptransport", "ppworker"],
         "scripts" : ["%s/ppserver.py" % pkgdir],

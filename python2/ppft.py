@@ -16,6 +16,7 @@ import ppcommon as common
 import pptransport as transport
 import ppworker as worker
 
+copyright = "Copyright (c) 2015-2016 California Institute of Technology."
 # comment out the following if this is a release
 __version__ += '.dev0'
 

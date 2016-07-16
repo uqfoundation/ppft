@@ -4,38 +4,38 @@ distributed and parallel python
 
 About Ppft
 ----------
-ppft is a fork of Parallel Python, and is developed as part of pathos: https://github.com/uqfoundation/pathos
+`ppft` is a fork of Parallel Python, and is developed as part of `pathos`: https://github.com/uqfoundation/pathos
 
-Parallel Python module (PP) provides an easy and efficient way to create parallel-enabled applications for SMP computers and clusters. PP module features cross-platform portability and dynamic load balancing. Thus application written with PP will parallelize efficiently even on heterogeneous and multi-platform clusters (including clusters running other application with variable CPU loads). Visit http://www.parallelpython.com for further information.
+Parallel Python module (`pp`) provides an easy and efficient way to create parallel-enabled applications for SMP computers and clusters. `pp` module features cross-platform portability and dynamic load balancing. Thus application written with `pp` will parallelize efficiently even on heterogeneous and multi-platform clusters (including clusters running other application with variable CPU loads). Visit http://www.parallelpython.com for further information.
 
-Pathos is a python framework for heterogeneous computing.
-Pathos is in active development, so any user feedback, bug reports, comments,
+`pathos` is a python framework for heterogeneous computing.
+`pathos` is in active development, so any user feedback, bug reports, comments,
 or suggestions are highly appreciated.  A list of known issues is maintained
 at http://trac.mystic.cacr.caltech.edu/project/pathos/query, with a public
 ticket list at https://github.com/uqfoundation/pathos/issues.
 
-NOTE: ppft installs as pp. If pp is installed, it should be uninstalled before ppft is installed -- otherwise, "import pp" will likely not find the ppft fork.
+NOTE: `ppft` installs as `pp`. If `pp` is installed, it should be uninstalled before `ppft` is installed -- otherwise, `import pp` may not find the `ppft` fork.
 
 
 Major Changes
 -------------
-* pip and setuptools support
+* `pip` and `setuptools` support
 * support for python 3
-* enhanced serialization, using dill.source
+* enhanced serialization, using `dill.source`
 
 
 Current Release
 ---------------
-This version is a fork of pp-1.6.4.
+This version is a fork of `pp-1.6.4`.
 
-The latest stable release of ppft is available from::
+The latest released version of `ppft` is available from::
     https://github.com/uqfoundation/ppft/releases
 
 or::
     https://pypi.python.org/pypi/ppft
 
 
-PP and ppft are distributed under a BSD-like license.
+`pp` and `ppft` are distributed under a BSD-like license.
 
 
 Development Version
@@ -49,21 +49,21 @@ If you have a new contribution, please submit a pull request.
 More Information
 ----------------
 Probably the best way to get started is to look at the examples that are
-provided within PP.  See pp.examples for a set of scripts.  Please feel
+provided within `pp`.  See `pp.examples` for a set of scripts.  Please feel
 free to submit a ticket on github, or ask a question on stackoverflow
 (@Mike McKerns).
 
-Pathos is an active research tool. There are a growing number of publications
-and presentations that discuss real-world examples and new features of pathos
+`pathos` is an active research tool. There are a growing number of publications
+and presentations that discuss real-world examples and new features of `pathos`
 in greater detail than presented in the user's guide.  If you would like to
-share how you use pathos in your work, please post a link or send an email
-(to mmckerns at caltech dot edu).
+share how you use `pathos` in your work, please post a link or send an email
+(to mmckerns at uqfoundation dot org).
 
 
 Citation
 --------
-If you use pathos to do research that leads to publication, we ask that you
-acknowledge use of pathos by citing the following in your publication::
+If you use `pathos` to do research that leads to publication, we ask that you
+acknowledge use of `pathos` by citing the following in your publication::
 
     M.M. McKerns, L. Strand, T. Sullivan, A. Fang, M.A.G. Aivazis,
     "Building a framework for predictive science", Proceedings of
@@ -76,3 +76,4 @@ acknowledge use of pathos by citing the following in your publication::
 
 Please see http://trac.mystic.cacr.caltech.edu/project/pathos or
 http://arxiv.org/pdf/1202.1056 for further information.
+
