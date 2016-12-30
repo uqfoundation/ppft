@@ -10,6 +10,9 @@ import sys
 import os, os.path
 pyversion = sys.version_info[0]
 pkgdir = 'python%s' % pyversion
+_pkgdir = pkgdir # 'src'
+# import shutil
+# shutil.copytree(pkgdir, _pkgdir)
 
 try:
     from setuptools import setup
@@ -160,9 +163,9 @@ kwds = {
         "author" : "Mike McKerns",
         "maintainer" : "Mike McKerns",
         "maintainer_email" : "mmckerns at uqfoundation dot org",
-        "package_dir" : {'': pkgdir},
+        "package_dir" : {'': _pkgdir},
         "py_modules" : ["ppft", "pp", "ppauto", "ppcommon", "pptransport", "ppworker"],
-        "scripts" : ["%s/ppserver.py" % pkgdir],
+        "scripts" : ["%s/ppserver.py" % _pkgdir],
         "description" : "distributed and parallel python",
         "platforms" : ["Windows", "Linux", "Mac"],
         "long_description" : LONG_DESCRIPTION,
@@ -189,3 +192,5 @@ if has_setuptools and pyversion > 2:
 
 setup(**kwds)
 
+# if os.path.exists(_pkgdir):
+#     shutil.rmtree(_pkgdir)

@@ -9,17 +9,12 @@ import math
 import sys
 import hashlib
 import pp
-if sys.version_info[0] >= 3:
-    def b_(x):
-        return x.encode('UTF-8')
-else:
-    def b_(x):
-        return x
 
 
 def md5test(hash, start, end):
     """Calculates md5 of the integers between 'start' and 'end' and
        compares it with 'hash'"""
+    from ppcommon import b_
     for x in range(start, end):
         if hashlib.md5(b_(str(x))).hexdigest() == hash:
             return x
@@ -46,6 +41,7 @@ else:
 print("Starting pp with %s workers" % job_server.get_ncpus())
 
 #Calculates md5 hash from the given number
+from ppcommon import b_
 hash = hashlib.md5(b_("1829182")).hexdigest()
 print("hash = %s" % hash)
 #Now we will try to find the number with this hash value

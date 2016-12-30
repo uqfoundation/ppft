@@ -32,6 +32,11 @@ forums
 
 import threading
 
+def str_(string): # is already str
+    return string
+def b_(string):   #XXX: same as six.b for 2.x?
+    return string
+
 copyright = "Copyright (c) 2005-2012 Vitalii Vanovschi. All rights reserved"
 __version__ = version = "1.6.4.7"
 
