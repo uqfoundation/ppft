@@ -2,6 +2,7 @@
 #
 # Author: Mike McKerns (mmckerns @caltech and @uqfoundation)
 # Copyright (c) 2015-2016 California Institute of Technology.
+# Copyright (c) 2016-2017 The Uncertainty Quantification Foundation.
 # License: 3-clause BSD.  The full license text is available at:
 #  - http://trac.mystic.cacr.caltech.edu/project/pathos/browser/dill/LICENSE
 """
@@ -16,7 +17,8 @@ import ppcommon as common
 import pptransport as transport
 import ppworker as worker
 
-copyright = "Copyright (c) 2015-2016 California Institute of Technology."
+copyright = """Copyright (c) 2015-2016 California Institute of Technology.
+Copyright (c) 2016-2017 The Uncertainty Quantification Foundation."""
 # comment out the following if this is a release
 __version__ += '.dev0'
 
