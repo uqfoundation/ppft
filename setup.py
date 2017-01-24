@@ -165,7 +165,7 @@ kwds = {
         "maintainer_email" : "mmckerns at uqfoundation dot org",
         "package_dir" : {'': _pkgdir},
         "py_modules" : ["ppft", "pp", "ppauto", "ppcommon", "pptransport", "ppworker"],
-        "scripts" : ["scripts/ppserver.py"],
+        "scripts" : ["%s/ppserver.py" % _pkgdir],
         "description" : "distributed and parallel python",
         "platforms" : ["Windows", "Linux", "Mac"],
         "long_description" : LONG_DESCRIPTION,
