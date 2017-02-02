@@ -41,7 +41,7 @@ import ppcommon as ppc
 copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
 Copyright (c) 2015-2016 California Institute of Technology.
 Copyright (c) 2016-2017 The Uncertainty Quantification Foundation."""
-__version__ = version = "1.6.4.7"
+__version__ = version = "1.6.4.8"
 
 # broadcast every 10 sec
 BROADCAST_INTERVAL = 10
