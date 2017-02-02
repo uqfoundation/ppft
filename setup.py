@@ -21,7 +21,7 @@ except ImportError:
     from distutils.core import setup
     has_setuptools = False
 
-stable_version = '1.6.4.6'
+stable_version = '1.6.4.7'
 target_version = '1.6.4.7'
 is_release = stable_version == target_version
 VERSION = stable_version if is_release else target_version + '.dev0'
@@ -65,7 +65,7 @@ Major Changes:
 Current Release
 ===============
 
-This version is ppft-1.6.4.6 (a fork of pp-1.6.4).
+This version is ppft-1.6.4.7 (a fork of pp-1.6.4).
 
 The latest released pathos fork of PP is available from::
 
@@ -91,8 +91,8 @@ Ppft is packaged to install from source, so you must
 download the tarball, unzip, and run the installer::
 
     [download]
-    $ tar -xvzf ppft-1.6.4.6.tgz
-    $ cd ppft-1.6.4.6
+    $ tar -xvzf ppft-1.6.4.7.tgz
+    $ cd ppft-1.6.4.7
     $ python setup.py build
     $ python setup.py install
 

@@ -1,4 +1,10 @@
 include COPYING
 include CHANGELOG
-include README_MODS
 include LICENSE
+include README_MODS
+include README.md
+include tox.ini
+recursive-include doc *
+recursive-include examples *
+recursive-include python2 *
+recursive-include python3 *
