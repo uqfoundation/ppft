@@ -21,7 +21,7 @@ except ImportError:
     from distutils.core import setup
     has_setuptools = False
 
-stable_version = '1.6.4.7'
+stable_version = '1.6.4.7.1'
 target_version = '1.6.4.8'
 is_release = stable_version == target_version
 VERSION = stable_version if is_release else target_version + '.dev0'
