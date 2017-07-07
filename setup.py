@@ -162,7 +162,6 @@ kwds = {
         "download_url" : "http://dev.danse.us/packages/",
         "author" : "Mike McKerns",
         "maintainer" : "Mike McKerns",
-        "maintainer_email" : "mmckerns at uqfoundation dot org",
         "package_dir" : {'': _pkgdir},
         "py_modules" : ["ppft", "pp", "ppauto", "ppcommon", "pptransport", "ppworker"],
         "scripts" : ["%s/ppserver.py" % _pkgdir],
