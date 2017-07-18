@@ -117,7 +117,7 @@ Ppft requires::
 Optional requirements::
 
     - setuptools, version >= 0.6
-    - dill, version >= 0.2.7
+    - dill, version >= 0.2.7.1
 
 
 More Information
