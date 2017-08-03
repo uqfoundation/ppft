@@ -11,7 +11,7 @@ Parallel Python module (`pp`) provides an easy and efficient way to create paral
 `pathos` is a python framework for heterogeneous computing.
 `pathos` is in active development, so any user feedback, bug reports, comments,
 or suggestions are highly appreciated.  A list of known issues is maintained
-at http://trac.mystic.cacr.caltech.edu/project/pathos/query, with a public
+at http://trac.mystic.cacr.caltech.edu/project/pathos/query.html, with a public
 ticket list at https://github.com/uqfoundation/pathos/issues.
 
 NOTE: `ppft` installs as `pp`. If `pp` is installed, it should be uninstalled before `ppft` is installed -- otherwise, `import pp` may not find the `ppft` fork.
@@ -29,11 +29,7 @@ Current Release
 This version is a fork of `pp-1.6.4`.
 
 The latest released version of `ppft` is available from::
-    https://github.com/uqfoundation/ppft/releases
-
-or::
-    https://pypi.python.org/pypi/ppft
-
+    https://pypi.org/project/ppft
 
 `pp` and `ppft` are distributed under a BSD-like license.
 
