@@ -314,24 +314,24 @@ class Server(object):
             restart=False, proto=2, socket_timeout=3600):
         """Creates Server instance
 
-           ncpus - the number of worker processes to start on the local
-                   computer, if parameter is omitted it will be set to
+           ncpus - the number of worker processes to start on the local \
+                   computer, if parameter is omitted it will be set to \
                    the number of processors in the system
-           ppservers - list of active parallel python execution servers
+           ppservers - list of active parallel python execution servers \
                    to connect with
-           secret - passphrase for network connections, if omitted a default
-                   passphrase will be used. It's highly recommended to use a
+           secret - passphrase for network connections, if omitted a default \
+                   passphrase will be used. It's highly recommended to use a \
                    custom passphrase for all network connections.
-           restart - whether to restart worker process after each task completion
+           restart - restart the worker process after each task completion
            proto - protocol number for pickle module
-           socket_timeout - socket timeout in seconds which is also the maximum 
-                   time a remote job could be executed. Increase this value
-                   if you have long running jobs or decrease if connectivity
+           socket_timeout - socket timeout in seconds, which is the maximum \
+                   time a remote job could be executed. Increase this value \
+                   if you have long running jobs or decrease if connectivity \
                    to remote ppservers is often lost.
 
-           With ncpus = 1 all tasks are executed consequently
+           With ncpus = 1 all tasks are executed consequently.
            For the best performance either use the default "autodetect" value
-           or set ncpus to the total number of processors in the system
+           or set ncpus to the total number of processors in the system.
         """
 
         if not isinstance(ppservers, tuple):
@@ -417,14 +417,14 @@ class Server(object):
             args - tuple with arguments of the 'func'
             depfuncs - tuple with functions which might be called from 'func'
             modules - tuple with module names to import
-            callback - callback function which will be called with argument
-                    list equal to callbackargs+(result,)
+            callback - callback function which will be called with argument \
+                    list equal to callbackargs+(result,) \
                     as soon as calculation is done
             callbackargs - additional arguments for callback function
             group - job group, is used when wait(group) is called to wait for
             jobs in a given group to finish
-            globals - dictionary from which all modules, functions and classes
-            will be imported, for instance: globals=globals()
+            globals - dict from which all modules, functions, and classes \
+                    will be imported, for instance: globals=globals()
         """
 
         # perform some checks for frequent mistakes
