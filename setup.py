@@ -11,6 +11,7 @@ import os, os.path
 pyversion = sys.version_info[0]
 pkgdir = 'python%s' % pyversion
 _pkgdir = pkgdir # 'src'
+_server = 'server%s' % pyversion
 # import shutil
 # shutil.copytree(pkgdir, _pkgdir)
 
@@ -41,37 +42,37 @@ ppft: distributed and parallel python
 About Ppft
 ==========
 
-ppft is a fork of Parallel Python, and is developed as part of pathos: https://github.com/uqfoundation/pathos
+``ppft`` is a fork of Parallel Python, and is developed as part of ``pathos``: https://github.com/uqfoundation/pathos
 
-Parallel Python module (PP) provides an easy and efficient way to create parallel-enabled applications for SMP computers and clusters. PP module features cross-platform portability and dynamic load balancing. Thus application written with PP will parallelize efficiently even on heterogeneous and multi-platform clusters (including clusters running other application with variable CPU loads). Visit http://www.parallelpython.com for further information.
+Parallel Python module (``pp``) provides an easy and efficient way to create parallel-enabled applications for SMP computers and clusters. ``pp`` module features cross-platform portability and dynamic load balancing. Thus application written with ``pp`` will parallelize efficiently even on heterogeneous and multi-platform clusters (including clusters running other application with variable CPU loads). Visit http://www.parallelpython.com for further information.
 
-Pathos is a python framework for heterogeneous computing.
-Pathos is in active development, so any user feedback, bug reports, comments,
+``ppft`` is part of ``pathos``, a python framework for heterogeneous computing.
+``ppft`` is in active development, so any user feedback, bug reports, comments,
 or suggestions are highly appreciated.  A list of known issues is maintained
 at http://trac.mystic.cacr.caltech.edu/project/pathos/query.html, with a public
-ticket list at https://github.com/uqfoundation/pathos/issues.
+ticket list at https://github.com/uqfoundation/ppft/issues.
 
-NOTE: ppft installs as pp. If pp is installed, it should be uninstalled before ppft is installed -- otherwise, "import pp" will likely not find the ppft fork.
+NOTE: ``ppft`` installs as ``pp``. If ``pp`` is installed, it should be uninstalled before ``ppft`` is installed -- otherwise, ``import pp`` will likely not find the ``ppft`` fork.
 
 
 Major Changes:
 ==============
 
-    - pip and setuptools support
+    - ``pip`` and ``setuptools`` support
     - support for python 3
-    - enhanced serialization, using dill.source
+    - enhanced serialization, using ``dill.source``
 
 
 Current Release
 ===============
 
-This version is ppft-1.6.4.8 (a fork of pp-1.6.4).
+This documentation is for version ``ppft-1.6.4.8`` (a fork of ``pp-1.6.4``).
 
-The latest released pathos fork of PP is available from::
+The latest released version of ``ppft`` is available from::
 
     https://pypi.org/project/ppft
 
-PP is distributed under a BSD-like license.
+``pp`` and ``ppft`` are distributed under a BSD-like license.
 
 
 Development Version
@@ -87,7 +88,7 @@ If you have a new contribution, please submit a pull request.
 Installation
 ============
 
-Ppft is packaged to install from source, so you must
+``ppft`` is packaged to install from source, so you must
 download the tarball, unzip, and run the installer::
 
     [download]
@@ -99,47 +100,46 @@ download the tarball, unzip, and run the installer::
 You will be warned of any missing dependencies and/or settings
 after you run the "build" step above.
 
-Alternately, ppft can be installed with pip or easy_install::
+Alternately, ``ppft`` can be installed with ``pip`` or ``easy_install``::
 
     $ pip install ppft
 
-NOTE: ppft installs as pp. If pp is installed, it should be uninstalled before ppft is installed -- otherwise, "import pp" will likely not find the ppft fork.
+NOTE: ``ppft`` installs as ``pp``. If ``pp`` is installed, it should be uninstalled before ``ppft`` is installed -- otherwise, ``import pp`` will likely not find the ``ppft`` fork.
 
 
 Requirements
 ============
 
-Ppft requires::
+``ppft`` requires::
 
-    - python2, version >= 2.5  *or*  python3, version >= 3.1, or pypy
-    - six, version >= 1.7.3
+    - ``python``, **version >= 2.5** or **version >= 3.1**, or ``pypy``
+    - ``six``, **version >= 1.7.3**
 
 Optional requirements::
 
-    - setuptools, version >= 0.6
-    - dill, version >= 0.2.7.1
+    - ``setuptools``, **version >= 0.6**
+    - ``dill``, **version >= 0.2.7.1**
 
 
 More Information
 ================
 
-Probably the best way to get started is to look at the examples that are
-provided within PP.  See pp.examples for a set of scripts.  Please feel
-free to submit a ticket on github, or ask a question on stackoverflow
-(@Mike McKerns).
-
-Pathos is an active research tool. There are a growing number of publications
-and presentations that discuss real-world examples and new features of pathos
-in greater detail than presented in the user's guide.  If you would like to
-share how you use pathos in your work, please post a link or send an email
-(to mmckerns at uqfoundation dot org).
+Probably the best way to get started is to look at the set of example scripts
+in ``ppft.examples``. You can run the test suite with ``python -m ppft.tests``.
+``ppft`` will create and execute jobs on local workers (automatically created
+using ``python -u -m ppft``). Additionally, remote servers can be created with 
+``ppserver`` (or ``python -m ppft.server``), and then jobs can be distributed
+to remote workers. See ``--help`` for more details on how to configure a server.
+Please feel free to submit a ticket on github, or ask a question on
+stackoverflow (**@Mike McKerns**).  If you would like to share how you use
+``ppft`` in your work, please send an email (to **mmckerns at uqfoundation dot org**).
 
 
 Citation
 ========
 
-If you use pathos to do research that leads to publication, we ask that you
-acknowledge use of pathos by citing the following in your publication::
+If you use ``ppft`` to do research that leads to publication, we ask that you
+acknowledge use of ``ppft`` by citing the following in your publication::
 
     M.M. McKerns, L. Strand, T. Sullivan, A. Fang, M.A.G. Aivazis,
     "Building a framework for predictive science", Proceedings of
@@ -162,9 +162,9 @@ kwds = {
         "download_url" : "https://github.com/uqfoundation/ppft/releases/download/ppft-%s/ppft-%s.tar.gz" % (stable_version, stable_version),
         "author" : "Mike McKerns",
         "maintainer" : "Mike McKerns",
-        "package_dir" : {'': _pkgdir},
-        "py_modules" : ["ppft", "pp", "ppauto", "ppcommon", "pptransport", "ppworker"],
-        "scripts" : ["%s/ppserver.py" % _pkgdir],
+        "packages" : ["ppft","pp","ppft.tests","ppft.server"],
+        "package_dir" : {'ppft': _pkgdir,'pp': _pkgdir,'ppft.server': _server,'ppft.tests':'examples'},
+        "scripts" : ["%s/ppserver" % _server],
         "description" : "distributed and parallel python",
         "platforms" : ["Windows", "Linux", "Mac"],
         "long_description" : LONG_DESCRIPTION,

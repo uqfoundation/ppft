@@ -46,8 +46,8 @@ except ImportError:
     try: import cPickle as pickle
     except ImportError: import pickle
 import six
-import pptransport
-import ppcommon as ppc
+from . import transport as pptransport
+from . import common as ppc
 
 copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
 Copyright (c) 2015-2016 California Institute of Technology.

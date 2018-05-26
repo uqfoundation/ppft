@@ -55,7 +55,7 @@ except ImportError:
     sha_new = sha.new
     md5_new = md5.new
 
-import ppcommon as ppc
+from . import common as ppc
 
 class Transport(object):
 

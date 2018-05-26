@@ -8,3 +8,5 @@ recursive-include doc *
 recursive-include examples *
 recursive-include python2 *
 recursive-include python3 *
+recursive-include server2 *
+recursive-include server3 *

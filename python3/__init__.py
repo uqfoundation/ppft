@@ -9,13 +9,13 @@
 ppft -- a friendly Parallel Python fork
 """
 
-from pp import *
-from pp import __version__, _USE_SUBPROCESS, \
-               _Task, _Worker, _RWorker, _Statistics
-import ppauto as auto
-import ppcommon as common
-import pptransport as transport
-import ppworker as worker
+from ._pp import *
+from ._pp import __version__, _USE_SUBPROCESS, \
+                 _Task, _Worker, _RWorker, _Statistics
+from . import auto
+from . import common
+from . import transport
+from . import worker
 
 copyright = """Copyright (c) 2015-2016 California Institute of Technology.
 Copyright (c) 2016-2018 The Uncertainty Quantification Foundation."""

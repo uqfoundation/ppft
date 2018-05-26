@@ -36,7 +36,7 @@ import sys
 import time
 import threading
 
-import ppcommon
+from . import common as ppc
 
 copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
 Copyright (c) 2015-2016 California Institute of Technology.
@@ -73,14 +73,14 @@ class Discover(object):
         if self.isclient:
             self.base.logger.debug("Client sends initial broadcast to (%s, %i)"
                     % self.broadcast_addr)
-            self.bsocket.sendto("C", self.broadcast_addr)
+            self.bsocket.sendto(ppc.b_("C"), self.broadcast_addr)
         else:
             while True:
                 if self.base._exiting:
                     return
                 self.base.logger.debug("Server sends broadcast to (%s, %i)"
                         % self.broadcast_addr)
-                self.bsocket.sendto("S", self.broadcast_addr)
+                self.bsocket.sendto(ppc.b_("S"), self.broadcast_addr)
                 time.sleep(BROADCAST_INTERVAL)
                 
 
@@ -93,13 +93,14 @@ class Discover(object):
         self.socket.settimeout(5)
         self.socket.bind(self.interface_addr)
 
-        ppcommon.start_thread("broadcast",  self.broadcast)
+        ppc.start_thread("broadcast",  self.broadcast)
 
         while True:
             try:
                 if self.base._exiting:
                     return
                 message, (host, port) = self.socket.recvfrom(1024)
+                message = ppc.str_(message)
                 remote_address = (host, self.broadcast_addr[1])
                 hostid = host + ":" + str(self.broadcast_addr[1])
                 self.base.logger.debug("Discovered host (%s, %i) message=%c"
@@ -107,11 +108,11 @@ class Discover(object):
                 if not self.base.autopp_list.get(hostid, 0) and self.isclient \
                         and message[0] == 'S':
                     self.base.logger.debug("Connecting to host %s" % (hostid, ))
-                    ppcommon.start_thread("ppauto_connect1",  self.base.connect1,
+                    ppc.start_thread("ppauto_connect1",  self.base.connect1,
                             remote_address+(False, ))
                 if not self.isclient and message[0] == 'C':
                     self.base.logger.debug("Replying to host %s" % (hostid, ))
-                    self.bsocket.sendto("S", self.broadcast_addr)
+                    self.bsocket.sendto(ppc.b_("S"), self.broadcast_addr)
             except socket.timeout:
                 pass
             except:

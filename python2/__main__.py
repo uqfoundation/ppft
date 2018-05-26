@@ -38,7 +38,7 @@ try:
     import dill as pickle
 except ImportError:
     import cPickle as pickle
-import pptransport
+from . import transport as pptransport
 
 copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
 Copyright (c) 2015-2016 California Institute of Technology.
