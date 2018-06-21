@@ -118,7 +118,7 @@ Requirements
 Optional requirements::
 
     - ``setuptools``, **version >= 0.6**
-    - ``dill``, **version >= 0.2.7.1**
+    - ``dill``, **version >= 0.2.8**
 
 
 More Information
