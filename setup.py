@@ -183,6 +183,7 @@ kwds = {
 if has_setuptools:
     kwds.update({
         "zip_safe" : False,
+        "extras_require" : {'dill': ['dill>=0.2.8.2']},
     })
 if has_setuptools and pyversion > 2:
     kwds.update({
