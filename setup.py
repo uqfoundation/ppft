@@ -23,7 +23,7 @@ except ImportError:
     has_setuptools = False
 
 stable_version = '1.6.4.9'
-target_version = '1.6.4.9'
+target_version = '1.6.6.1'
 is_release = stable_version == target_version
 VERSION = stable_version if is_release else target_version + '.dev0'
 # os.chdir(pkgdir)
@@ -66,7 +66,7 @@ Major Changes:
 Current Release
 ===============
 
-This documentation is for version ``ppft-1.6.4.9`` (a fork of ``pp-1.6.4``).
+This documentation is for version ``ppft-1.6.6.1`` (a fork of ``pp-1.6.6``).
 
 The latest released version of ``ppft`` is available from::
 
@@ -92,8 +92,8 @@ Installation
 download the tarball, unzip, and run the installer::
 
     [download]
-    $ tar -xvzf ppft-1.6.4.9.tgz
-    $ cd ppft-1.6.4.9
+    $ tar -xvzf ppft-1.6.6.1.tgz
+    $ cd ppft-1.6.6.1
     $ python setup.py build
     $ python setup.py install
 
