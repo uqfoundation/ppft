@@ -1,3 +1,10 @@
+pp-1.6.6:
+    1) Fixed bug in config parsing.
+    2) Removed harmless error message that sometimes displayed on Windows.
+
+pp-1.6.5:
+    1) Fixed bug in search path order. 
+
 pp-1.6.4:
     1) Start ppworker using -m
     2) Fixed windows compatibility issue.

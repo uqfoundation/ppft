@@ -365,8 +365,9 @@ class Server(object):
         pythondirs = [os.getcwd()] + sys.path
 
         if "PYTHONPATH" in os.environ and os.environ["PYTHONPATH"]:
-            pythondirs += os.environ["PYTHONPATH"].split(os.pathsep)
-        os.environ["PYTHONPATH"] = os.pathsep.join(set(pythondirs))
+            pythondirs = os.environ["PYTHONPATH"].split(os.pathsep) + pythondirs
+        dirset = set()        
+        os.environ["PYTHONPATH"] = os.pathsep.join([dirset.add(x) or x for x in pythondirs if x not in dirset])
 
         atexit.register(self.destroy)
         self.__stats = {"local": _Statistics(0)}
@@ -871,7 +872,7 @@ class Server(object):
             try:
                 worker.t.close()
                 if sys.platform.startswith("win"):
-                    os.popen('TASKKILL /PID '+str(worker.pid)+' /F')
+                    os.popen('TASKKILL /PID '+str(worker.pid)+' /F 2>NUL')
                 else:
                     os.kill(worker.pid, 9)
                     os.waitpid(worker.pid, 0)

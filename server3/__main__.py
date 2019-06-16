@@ -96,7 +96,7 @@ class _NetworkServer(pp.Server):
         self.last_con_time = time.time()
         self.ncon_lock = threading.Lock()
 
-        self.logger.debug("Strarting network server interface=%s port=%i"
+        self.logger.debug("Starting network server interface=%s port=%i"
                 % (self.host, self.port))
         if self.timeout is not None:
             self.logger.debug("ppserver will exit in %i seconds if no "\
@@ -245,6 +245,10 @@ def parse_config(file_loc):
         six.print_("ERROR: Can not access %s." % arg, file=sys.stderr)
         sys.exit(1)
 
+    args = {}
+    autodiscovery = False
+    debug = False
+
     # Load the configuration file
     config = ConfigObj(file_loc)
     # try each config item and use the result if it exists. If it doesn't
@@ -276,7 +280,7 @@ def parse_config(file_loc):
         pass
 
     try:
-        args['loglevel'] = config['general'].as_bool('debug')
+        debug = config['general'].as_bool('debug')
     except:
         pass
 
@@ -310,7 +314,7 @@ def parse_config(file_loc):
     except:
         pass
     # Return a tuple of the args dict and autodiscovery variable
-    return args, autodiscovery
+    return args, autodiscovery, debug
 
 
 def print_usage():
@@ -359,6 +363,7 @@ def create_network_server(argv):
 
     args = {}
     autodiscovery = False
+    debug = False
 
     log_level = logging.WARNING
     log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -368,10 +373,9 @@ def create_network_server(argv):
             print_usage()
             sys.exit()
         elif opt == "-c":
-            args, autodiscovery = parse_config(arg)
+            args, autodiscovery, debug = parse_config(arg)
         elif opt == "-d":
-            log_level = logging.DEBUG
-            pp.SHOW_EXPECTED_EXCEPTIONS = True
+            debug = True
         elif opt == "-f":
             log_format = arg
         elif opt == "-i":
@@ -396,6 +400,10 @@ def create_network_server(argv):
             args["socket_timeout"] = int(arg)
         elif opt == "-P":
             args["pid_file"] = arg
+
+    if debug:
+        log_level = logging.DEBUG
+        pp.SHOW_EXPECTED_EXCEPTIONS = True
 
     log_handler = logging.StreamHandler()
     log_handler.setFormatter(logging.Formatter(log_format))
