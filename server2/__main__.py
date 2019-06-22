@@ -32,7 +32,7 @@ Parallel Python Software, Network Server
 http://www.parallelpython.com - updates, documentation, examples and support
 forums
 """
-from __future__ import with_statement, absolute_import
+from __future__ import absolute_import
 
 import atexit
 import logging

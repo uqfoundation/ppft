@@ -32,8 +32,6 @@ Parallel Python Software, Network Server
 http://www.parallelpython.com - updates, documentation, examples and support
 forums
 """
-from __future__ import with_statement
-
 import atexit
 import logging
 import errno
