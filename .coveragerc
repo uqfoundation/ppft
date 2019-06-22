@@ -1,0 +1,26 @@
+[run]
+# source = ppft
+include =
+    */python2/*
+    */python3/*
+    */server2/*
+    */server3/*
+omit = 
+    */examples/*
+# timid = true
+parallel = true
+# concurrency = multiprocessing # thread
+data_file = $TRAVIS_BUILD_DIR/.coverage
+# debug = trace
+
+[report]
+include =
+    */python2/*
+    */python3/*
+    */server2/*
+    */server3/*
+exclude_lines =
+    pragma: no cover
+    if __name__ == .__main__.:
+show_missing = true
+ignore_errors = true
