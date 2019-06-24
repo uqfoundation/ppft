@@ -1,11 +1,14 @@
 [run]
-# source = ppft
+source =
+    python2
+    python3
+    server2
+    server3
 include =
     */python2/*
     */python3/*
     */server2/*
     */server3/*
-    */site-packages/ppft*/pp*
 omit = 
     */examples/*
     */tests/*
@@ -13,7 +16,15 @@ omit =
 # parallel = true
 # concurrency = multiprocessing # thread
 data_file = $TRAVIS_BUILD_DIR/.coverage
-# debug = trace
+debug = trace,dataio
+
+[paths]
+source =
+    python2
+    python3
+    server2
+    server3
+    */site-packages/ppft*/pp*
 
 [report]
 include =
@@ -21,7 +32,6 @@ include =
     */python3/*
     */server2/*
     */server3/*
-    */site-packages/ppft*/pp*
 exclude_lines =
     pragma: no cover
     if __name__ == .__main__.:
