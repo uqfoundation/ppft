@@ -11,7 +11,7 @@ import os, os.path
 pyversion = sys.version_info[0]
 pkgdir = 'pp' if pyversion == 2 else 'ppft'
 _pkgdir = pkgdir # 'src'
-_server = os.path.join(pkgdir, 'server')
+_server = os.path.join('ppft', 'server')
 # import shutil
 # shutil.copytree(pkgdir, _pkgdir)
 
