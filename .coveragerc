@@ -21,11 +21,8 @@ source =
 
 [report]
 include =
-    */python2/*
-    */python3/*
-    */server2/*
-    */server3/*
-    */site-packages/ppft*/pp*
+    */pp/*
+    */ppft/*
 exclude_lines =
     pragma: no cover
     if __name__ == .__main__.:
