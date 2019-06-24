@@ -9,9 +9,9 @@ Standard build tool for python libraries.
 import sys
 import os, os.path
 pyversion = sys.version_info[0]
-pkgdir = 'python%s' % pyversion
+pkgdir = 'pp' if pyversion == 2 else 'ppft'
 _pkgdir = pkgdir # 'src'
-_server = 'server%s' % pyversion
+_server = os.path.join(pkgdir, 'server')
 # import shutil
 # shutil.copytree(pkgdir, _pkgdir)
 

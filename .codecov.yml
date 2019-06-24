@@ -1,7 +1,4 @@
 fixes:
-  - "*/python2.7/site-packages/ppft*/ppft/*::python2/"
-  - "*/python2.7/site-packages/ppft*/pp/*::python2/"
-  - "*/python2.7/site-packages/ppft*/ppft/server/*::server2/"
-  - "*/python3.6/site-packages/ppft*/ppft/*::python3/"
-  - "*/python3.6/site-packages/ppft*/pp/*::python3/"
-  - "*/python3.6/site-packages/ppft*/ppft/server/*::server3/"
+  - "*/site-packages/ppft*/ppft/*::ppft/"
+  - "*/site-packages/ppft*/pp/*::ppft/"
+  - "*/site-packages/ppft*/ppft/server/*::ppft/server/"
