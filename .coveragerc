@@ -1,7 +1,11 @@
 [run]
 include =
-    *2.7/site-packages/ppft*/pp*
-    *3.6/site-packages/ppft*/pp*
+    *2.7/site-packages/ppft*/pp/*
+    *2.7/site-packages/ppft*/ppft/*
+    *2.7/site-packages/ppft*/ppft/server/*
+    *3.6/site-packages/ppft*/pp/*
+    *3.6/site-packages/ppft*/ppft/*
+    *3.6/site-packages/ppft*/ppft/server/*
 omit = 
     */examples/*
     */tests/*
@@ -17,12 +21,15 @@ source =
     python3
     server2
     server3
-    */site-packages/ppft*/pp*
+    */site-packages/ppft*/pp
+    */site-packages/ppft*/ppft
+    */site-packages/ppft*/ppft/server
 
 [report]
 include =
-    */pp/*
-    */ppft/*
+    */site-packages/ppft*/pp/*
+    */site-packages/ppft*/ppft/*
+    */site-packages/ppft*/ppft/server/*
 exclude_lines =
     pragma: no cover
     if __name__ == .__main__.:
