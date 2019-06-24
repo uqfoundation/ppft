@@ -13,7 +13,7 @@ omit =
 # parallel = true
 # concurrency = multiprocessing # thread
 data_file = $TRAVIS_BUILD_DIR/.coverage
-debug = trace,dataio
+# debug = trace
 
 [paths]
 source =
