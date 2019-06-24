@@ -1,9 +1,4 @@
 [run]
-source =
-    python2
-    python3
-    server2
-    server3
 include =
     */python2/*
     */python3/*
