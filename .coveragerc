@@ -1,15 +1,15 @@
 [run]
 include =
-    python2
-    python3
-    server2
-    server3
-    *2.7/site-packages/ppft*/pp
-    *2.7/site-packages/ppft*/ppft
-    *2.7/site-packages/ppft*/ppft/server
-    *3.6/site-packages/ppft*/pp
-    *3.6/site-packages/ppft*/ppft
-    *3.6/site-packages/ppft*/ppft/server
+    python2/*
+    python3/*
+    server2/*
+    server3/*
+    *2.7/site-packages/ppft*/pp/*
+    *2.7/site-packages/ppft*/ppft/*
+    *2.7/site-packages/ppft*/ppft/server/*
+    *3.6/site-packages/ppft*/pp/*
+    *3.6/site-packages/ppft*/ppft/*
+    *3.6/site-packages/ppft*/ppft/server/*
 omit = 
     */examples/*
     */tests/*
@@ -18,27 +18,27 @@ omit =
 # concurrency = multiprocessing # thread
 data_file = $TRAVIS_BUILD_DIR/.coverage
 # data_file = ./.coverage
-# debug = trace
+debug = trace
 
-[paths]
-source =
-    python2
-    python3
-    server2
-    server3
-    */site-packages/ppft*/pp
-    */site-packages/ppft*/ppft
-    */site-packages/ppft*/ppft/server
+#[paths]
+#source =
+#    python2/*
+#    python3/*
+#    server2/*
+#    server3/*
+#    */site-packages/ppft*/pp/*
+#    */site-packages/ppft*/ppft/*
+#    */site-packages/ppft*/ppft/server/*
 
 [report]
 include =
-    python2
-    python3
-    server2
-    server3
-    */site-packages/ppft*/pp
-    */site-packages/ppft*/ppft
-    */site-packages/ppft*/ppft/server
+    python2/*
+    python3/*
+    server2/*
+    server3/*
+    */site-packages/ppft*/pp/*
+    */site-packages/ppft*/ppft/*
+    */site-packages/ppft*/ppft/server/*
 exclude_lines =
     pragma: no cover
     if __name__ == .__main__.:
