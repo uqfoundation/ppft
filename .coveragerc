@@ -4,12 +4,12 @@ include =
     python3
     server2
     server3
-    *2.7/site-packages/ppft*/pp/*
-    *2.7/site-packages/ppft*/ppft/*
-    *2.7/site-packages/ppft*/ppft/server/*
-    *3.6/site-packages/ppft*/pp/*
-    *3.6/site-packages/ppft*/ppft/*
-    *3.6/site-packages/ppft*/ppft/server/*
+    *2.7/site-packages/ppft*/pp
+    *2.7/site-packages/ppft*/ppft
+    *2.7/site-packages/ppft*/ppft/server
+    *3.6/site-packages/ppft*/pp
+    *3.6/site-packages/ppft*/ppft
+    *3.6/site-packages/ppft*/ppft/server
 omit = 
     */examples/*
     */tests/*
@@ -36,11 +36,11 @@ include =
     python3
     server2
     server3
-    */site-packages/ppft*/pp/*
-    */site-packages/ppft*/ppft/*
-    */site-packages/ppft*/ppft/server/*
+    */site-packages/ppft*/pp
+    */site-packages/ppft*/ppft
+    */site-packages/ppft*/ppft/server
 exclude_lines =
     pragma: no cover
     if __name__ == .__main__.:
-show_missing = true
+# show_missing = true
 ignore_errors = true
