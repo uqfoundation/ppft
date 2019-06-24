@@ -1,9 +1,7 @@
 [run]
 include =
-    */python2/*
-    */python3/*
-    */server2/*
-    */server3/*
+    *2.7/site-packages/ppft*/pp*
+    *3.6/site-packages/ppft*/pp*
 omit = 
     */examples/*
     */tests/*
@@ -27,6 +25,7 @@ include =
     */python3/*
     */server2/*
     */server3/*
+    */site-packages/ppft*/pp*
 exclude_lines =
     pragma: no cover
     if __name__ == .__main__.:
