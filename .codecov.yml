@@ -1,0 +1,5 @@
+fixes:
+  - "*/python2.7/site-packages/ppft*/pp/::$PWD/python2/"
+  - "*/python2.7/site-packages/ppft*/ppft/server/::$PWD/server2/"
+  - "*/python3.6/site-packages/ppft*/pp/::$PWD/python3/"
+  - "*/python3.6/site-packages/ppft*/ppft/server/::$PWD/server3/"
