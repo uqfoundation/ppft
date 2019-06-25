@@ -8,7 +8,10 @@
 import math
 import sys
 import hashlib
-import pp
+if sys.version_info[0] == 2:
+    import pp
+else:
+    import ppft as pp
 
 
 def md5test(hash, start, end):
