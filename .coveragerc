@@ -1,13 +1,9 @@
 [run]
 include =
-    */pp/*
-    */pp/server/*
     */ppft/*
     */ppft/server/*
-#   */site-packages/ppft*/pp/*
-#   */site-packages/ppft*/pp/server/*
-#   */site-packages/ppft*/ppft/*
-#   */site-packages/ppft*/ppft/server/*
+    */site-packages/ppft*/ppft/*
+    */site-packages/ppft*/ppft/server/*
 omit = 
     */examples/*
     */tests/*
@@ -21,19 +17,14 @@ debug = trace
 [paths]
 source =
     ppft/*
-    */site-packages/ppft*/pp/*
     */site-packages/ppft*/ppft/*
 
 [report]
 include =
-    */pp/*
-    */pp/server/*
     */ppft/*
     */ppft/server/*
-#   */site-packages/ppft*/pp/*
-#   */site-packages/ppft*/pp/server/*
-#   */site-packages/ppft*/ppft/*
-#   */site-packages/ppft*/ppft/server/*
+    */site-packages/ppft*/ppft/*
+    */site-packages/ppft*/ppft/server/*
 exclude_lines =
     pragma: no cover
     if __name__ == .__main__.:
