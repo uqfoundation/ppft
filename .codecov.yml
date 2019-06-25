@@ -1,4 +1,0 @@
-fixes:
-  - "*/site-packages/ppft*/ppft/*::ppft/"
-  - "*/site-packages/ppft*/pp/*::ppft/"
-  - "*/site-packages/ppft*/ppft/server/*::ppft/server/"
