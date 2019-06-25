@@ -47,10 +47,10 @@ import signal
 import time
 import os
 
-import pp
-import pp.auto as ppauto
-import pp.common as ppcommon
-import pp.transport as pptransport
+import ppft as pp
+import ppft.auto as ppauto
+import ppft.common as ppcommon
+import ppft.transport as pptransport
 
 copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
 Copyright (c) 2015-2016 California Institute of Technology.
