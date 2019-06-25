@@ -1,4 +1,5 @@
 [run]
+# source = */ppft/*
 include =
     */ppft/*
     */ppft/server/*
@@ -8,9 +9,9 @@ omit =
 # timid = true
 # parallel = true
 # concurrency = multiprocessing # thread
-data_file = $TRAVIS_BUILD_DIR/.coverage
+# data_file = $TRAVIS_BUILD_DIR/.coverage
 # data_file = ./.coverage
-debug = trace
+# debug = trace
 
 [report]
 include =
