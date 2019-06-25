@@ -2,8 +2,6 @@
 include =
     */ppft/*
     */ppft/server/*
-    */site-packages/ppft*/ppft/*
-    */site-packages/ppft*/ppft/server/*
 omit = 
     */examples/*
     */tests/*
@@ -14,17 +12,15 @@ data_file = $TRAVIS_BUILD_DIR/.coverage
 # data_file = ./.coverage
 debug = trace
 
-[paths]
-source =
-    ppft/*
-    */site-packages/ppft*/ppft/*
+# [paths]
+# source =
+#     ppft/*
+#     */site-packages/ppft*/ppft/*
 
 [report]
 include =
     */ppft/*
     */ppft/server/*
-    */site-packages/ppft*/ppft/*
-    */site-packages/ppft*/ppft/server/*
 exclude_lines =
     pragma: no cover
     if __name__ == .__main__.:
