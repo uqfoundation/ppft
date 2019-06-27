@@ -20,7 +20,7 @@ from . import worker
 copyright = """Copyright (c) 2015-2016 California Institute of Technology.
 Copyright (c) 2016-2019 The Uncertainty Quantification Foundation."""
 # comment out the following if this is a release
-# __version__ += '.dev0'
+__version__ += '.dev0'
 
 #'''
 #__version__ = __version__.rsplit('.',1)
