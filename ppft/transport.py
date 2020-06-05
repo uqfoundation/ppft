@@ -135,7 +135,7 @@ class PipeTransport(Transport):
        #open('/tmp/pp.debug', 'a+').write(repr((r,w))+'\n')
         self.scache = {}
         self.exiting = False
-        if isinstance(r, ppc.file) and isinstance(w, ppc.file):
+        if hasattr(r, 'read') and isinstance(w, 'write'):
             self.r = r
             self.w = w
         else:
