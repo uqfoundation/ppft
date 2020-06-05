@@ -121,7 +121,7 @@ class PipeTransport(Transport):
     def __init__(self, r, w):
         self.scache = {}
         self.exiting = False
-        if hasattr(r, 'read') and isinstance(w, 'write'):
+        if hasattr(r, 'read') and hasattr(w, 'write'):
             self.r = r
             self.w = w
         else:
