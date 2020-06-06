@@ -6,8 +6,17 @@
 Standard build tool for python libraries.
 """
 
-import sys
 import os, os.path
+import sys
+# drop support for older python
+unsupported = None
+if sys.version_info < (2, 7):
+    unsupported = 'Versions of Python before 2.7 are not supported'
+elif (3, 0) <= sys.version_info < (3, 5):
+    unsupported = 'Versions of Python before 3.5 are not supported'
+if unsupported:
+    raise ValueError(unsupported)
+
 pyversion = sys.version_info[0]
 pkgdir = 'pp' if pyversion == 2 else 'ppft'
 _pkgdir = pkgdir # 'src'
@@ -48,9 +57,7 @@ Parallel Python module (``pp``) provides an easy and efficient way to create par
 
 ``ppft`` is part of ``pathos``, a python framework for heterogeneous computing.
 ``ppft`` is in active development, so any user feedback, bug reports, comments,
-or suggestions are highly appreciated.  A list of known issues is maintained
-at http://trac.mystic.cacr.caltech.edu/project/pathos/query.html, with a public
-ticket list at https://github.com/uqfoundation/ppft/issues.
+or suggestions are highly appreciated.  A list of issues is located at https://github.com/uqfoundation/ppft/issues, with a legacy list maintained at https://uqfoundation.github.io/pathos-issues.html.
 
 NOTE: ``ppft`` installs as ``pp``. If ``pp`` is installed, it should be uninstalled before ``ppft`` is installed -- otherwise, ``import pp`` will likely not find the ``ppft`` fork.
 
@@ -112,7 +119,7 @@ Requirements
 
 ``ppft`` requires::
 
-    - ``python``, **version >= 2.6** or **version >= 3.3**, or ``pypy``
+    - ``python``, **version >= 2.7** or **version >= 3.5**, or ``pypy``
     - ``six``, **version >= 1.7.3**
 
 Optional requirements::
@@ -148,9 +155,9 @@ acknowledge use of ``ppft`` by citing the following in your publication::
 
     Michael McKerns and Michael Aivazis,
     "pathos: a framework for heterogeneous computing", 2010- ;
-    http://trac.mystic.cacr.caltech.edu/project/pathos
+    https://uqfoundation.github.io/pathos.html
 
-Please see http://trac.mystic.cacr.caltech.edu/project/pathos or
+Please see https://uqfoundation.github.io/pathos.html or
 http://arxiv.org/pdf/1202.1056 for further information.
 
 """

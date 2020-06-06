@@ -10,9 +10,7 @@ Parallel Python module (``pp``) provides an easy and efficient way to create par
 
 ``ppft`` is part of ``pathos``, a python framework for heterogeneous computing.
 ``ppft`` is in active development, so any user feedback, bug reports, comments,
-or suggestions are highly appreciated.  A list of known issues is maintained
-at http://trac.mystic.cacr.caltech.edu/project/pathos/query.html, with a public
-ticket list at https://github.com/uqfoundation/ppft/issues.
+or suggestions are highly appreciated.  A list of issues is located at https://github.com/uqfoundation/ppft/issues, with a legacy list maintained at https://uqfoundation.github.io/pathos-issues.html.
 
 NOTE: ``ppft`` installs as ``pp``. If ``pp`` is installed, it should be uninstalled before ``ppft`` is installed -- otherwise, ``import pp`` may not find the ``ppft`` fork.
 
@@ -37,6 +35,7 @@ The latest released version of ``ppft`` is available from::
 Development Version
 [![Travis Build Status](https://img.shields.io/travis/uqfoundation/ppft.svg?label=build&logo=travis&branch=master)](https://travis-ci.org/uqfoundation/ppft)
 [![codecov](https://codecov.io/gh/uqfoundation/ppft/branch/master/graph/badge.svg)](https://codecov.io/gh/uqfoundation/ppft)
+[![Downloads](https://pepy.tech/badge/ppft)](https://pepy.tech/project/ppft)
 -------------------
 You can get the latest development version with all the shiny new features at::
     https://github.com/uqfoundation
@@ -69,8 +68,8 @@ acknowledge use of ``ppft`` by citing the following in your publication::
 
     Michael McKerns and Michael Aivazis,
     "pathos: a framework for heterogeneous computing", 2010- ;
-    http://trac.mystic.cacr.caltech.edu/project/pathos
+    https://uqfoundation.github.io/pathos.html
 
-Please see http://trac.mystic.cacr.caltech.edu/project/pathos or
+Please see https://uqfoundation.github.io/pathos.html or
 http://arxiv.org/pdf/1202.1056 for further information.
 
