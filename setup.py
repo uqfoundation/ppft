@@ -119,7 +119,7 @@ Requirements
 
 ``ppft`` requires::
 
-    - ``python``, **version >= 2.7** or **version >= 3.5**, or ``pypy``
+    - ``python``, **version == 2.7** or **version >= 3.5**, or ``pypy``
     - ``six``, **version >= 1.7.3**
 
 Optional requirements::
