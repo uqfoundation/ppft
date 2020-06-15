@@ -125,7 +125,7 @@ Requirements
 Optional requirements::
 
     - ``setuptools``, **version >= 0.6**
-    - ``dill``, **version >= 0.3.1**
+    - ``dill``, **version >= 0.3.2**
 
 
 More Information
@@ -190,7 +190,7 @@ kwds = {
 if has_setuptools:
     kwds.update({
         "zip_safe" : False,
-        "extras_require" : {'dill': ['dill>=0.3.1']},
+        "extras_require" : {'dill': ['dill>=0.3.2']},
     })
 if has_setuptools and pyversion > 2:
     kwds.update({
