@@ -1,10 +1,10 @@
 include COPYING
 include CHANGELOG
 include LICENSE
-include README_MODS
-include README.md
+include README*
 include tox.ini
 recursive-include doc *
 recursive-include examples *
 recursive-include pp *
 recursive-include ppft *
+include .*
