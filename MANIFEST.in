@@ -8,3 +8,5 @@ recursive-include examples *
 recursive-include pp *
 recursive-include ppft *
 include .*
+prune .git
+prune .coverage
