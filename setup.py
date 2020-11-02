@@ -31,7 +31,7 @@ except ImportError:
     from distutils.core import setup
     has_setuptools = False
 
-stable_version = '1.6.6.2'
+stable_version = '1.6.6.3'
 target_version = '1.6.6.3'
 is_release = stable_version == target_version
 VERSION = stable_version if is_release else target_version + '.dev0'
@@ -73,7 +73,7 @@ Major Changes:
 Current Release
 ===============
 
-This documentation is for version ``ppft-1.6.6.2`` (a fork of ``pp-1.6.6``).
+This documentation is for version ``ppft-1.6.6.3`` (a fork of ``pp-1.6.6``).
 
 The latest released version of ``ppft`` is available from::
 
@@ -99,8 +99,8 @@ Installation
 download the tarball, unzip, and run the installer::
 
     [download]
-    $ tar -xvzf ppft-1.6.6.2.tgz
-    $ cd ppft-1.6.6.2
+    $ tar -xvzf ppft-1.6.6.3.tgz
+    $ cd ppft-1.6.6.3
     $ python setup.py build
     $ python setup.py install
 

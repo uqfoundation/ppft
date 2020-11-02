@@ -66,7 +66,7 @@ else:
 copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
 Copyright (c) 2015-2016 California Institute of Technology.
 Copyright (c) 2016-2020 The Uncertainty Quantification Foundation."""
-__version__ = version = "1.6.6.2"
+__version__ = version = "1.6.6.3"
 
 def start_thread(name,  target,  args=(),  kwargs={},  daemon=True):
     """Starts a thread"""
