@@ -2,7 +2,7 @@
 # Parallel Python Software: http://www.parallelpython.com
 # Copyright (c) 2005-2012 Vitalii Vanovschi.
 # Copyright (c) 2015-2016 California Institute of Technology.
-# Copyright (c) 2016-2020 The Uncertainty Quantification Foundation.
+# Copyright (c) 2016-2021 The Uncertainty Quantification Foundation.
 # All rights reserved.
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
@@ -53,7 +53,7 @@ import pp.transport as pptransport
 
 copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
 Copyright (c) 2015-2016 California Institute of Technology.
-Copyright (c) 2016-2020 The Uncertainty Quantification Foundation."""
+Copyright (c) 2016-2021 The Uncertainty Quantification Foundation."""
 __version__ = version = "1.6.6.4"
 
 LISTEN_SOCKET_TIMEOUT = 20
