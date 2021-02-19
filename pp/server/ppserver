@@ -95,7 +95,7 @@ class _NetworkServer(pp.Server):
         self.last_con_time = time.time()
         self.ncon_lock = threading.Lock()
 
-        self.logger.debug("Strarting network server interface=%s port=%i"
+        self.logger.debug("Starting network server interface=%s port=%i"
                 % (self.host, self.port))
         if self.timeout is not None:
             self.logger.debug("ppserver will exit in %i seconds if no "\
