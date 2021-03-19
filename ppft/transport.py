@@ -135,7 +135,7 @@ class PipeTransport(Transport):
        #open('/tmp/pp.debug', 'a+').write(repr((r,w))+'\n')
         self.scache = {}
         self.exiting = False
-        if isinstance(r, ppc.file) and isinstance(w, ppc.file):
+        if hasattr(r, 'read') and hasattr(w, 'write'):
             self.r = r
             self.w = w
         else:
@@ -158,7 +158,7 @@ class PipeTransport(Transport):
     def send(self, msg):
        #l = len(ppc.b_(msg)) if (self.has_wb or self.w.mode == 'wb') else len(ppc.str_(msg))
        #open('/tmp/pp.debug', 'a+').write(repr(('s', l, self.w, msg))+'\n')
-        if self.has_wb or self.w.mode == 'wb':
+        if self.has_wb or (hasattr(self.w, 'mode') and self.w.mode == 'rb'):
             msg = ppc.b_(msg)
             self.wb.write(struct.pack("!Q", len(msg)))
             self.w.flush()
@@ -173,7 +173,7 @@ class PipeTransport(Transport):
         e_size = struct.calcsize("!Q") # 8
         c_size = struct.calcsize("!c") # 1
         r_size = 0
-        stub = ppc.b_("") if (self.has_rb or self.r.mode == 'rb') else ""
+        stub = ppc.b_("") if (self.has_rb or (hasattr(self.r, 'mode') and self.r.mode == 'rb')) else ""
         data = stub
         while r_size < e_size:
             msg = self.rb.read(e_size-r_size)
