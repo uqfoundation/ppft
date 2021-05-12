@@ -8,8 +8,13 @@
 """
 ppft worker: ppworker to communicate with ppserver
 """
-from pp.__main__ import *
-from pp.__main__ import _WorkerProcess, __version__
+import sys
+if sys.version_info[0] == 2:
+    from pp.__main__ import *
+    from pp.__main__ import _WorkerProcess, __version__
+else:
+    from ppft.__main__ import *
+    from ppft.__main__ import _WorkerProcess, __version__
 
 
 if __name__ == "__main__":

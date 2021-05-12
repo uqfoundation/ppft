@@ -33,12 +33,21 @@ forums
 """
 import sys
 import os
-import StringIO
+try:
+    import io
+    ioStringIO = io.StringIO
+   #ioStringIO = io.BytesIO
+except ImportError:
+    import StringIO as io
+    ioStringIO = io.StringIO
 try:
     import dill as pickle
 except ImportError:
-    import cPickle as pickle
+    try: import cPickle as pickle
+    except ImportError: import pickle
+import six
 from . import transport as pptransport
+from . import common as ppc
 
 copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
 Copyright (c) 2015-2016 California Institute of Technology.
@@ -47,16 +56,16 @@ __version__ = version = "1.6.6.4"
 
 
 def preprocess(msg):
-    fname, fsources, imports = pickle.loads(msg)
+    fname, fsources, imports = pickle.loads(ppc.b_(msg))
     fobjs = [compile(fsource, '<string>', 'exec') for fsource in fsources]
     for module in imports:
         try:            
             if not module.startswith("from ") and not module.startswith("import "):
                 module = "import " + module
-            exec module
+            six.exec_(module)
             globals().update(locals())
         except:
-            print "An error has occured during the module import"
+            print("An error has occured during the module import")
             sys.excepthook(*sys.exc_info())
     return fname, fobjs
 
@@ -65,13 +74,18 @@ class _WorkerProcess(object):
     def __init__(self):
         self.hashmap = {}
         self.e = sys.__stderr__
-        self.sout = StringIO.StringIO()
+        self.sout = ioStringIO()
 #        self.sout = open("/tmp/pp.debug","a+")
         sys.stdout = self.sout
         sys.stderr = self.sout
         self.t = pptransport.CPipeTransport(sys.stdin, sys.__stdout__)
+       #open('/tmp/pp.debug', 'a+').write('Starting _WorkerProcess\n')
+       #open('/tmp/pp.debug', 'a+').write('send... \n')
         self.t.send(str(os.getpid()))
+       #open('/tmp/pp.debug', 'a+').write('send: %s\n' % str(os.getpid()))
+       #open('/tmp/pp.debug', 'a+').write('receive... \n')
         self.pickle_proto = int(self.t.receive())
+       #open('/tmp/pp.debug', 'a+').write('receive: %s\n' % self.pickle_proto)
 
     def run(self):
         try:
@@ -83,20 +97,20 @@ class _WorkerProcess(object):
 
                 for __fobj in __fobjs:
                     try:
-                        exec __fobj
+                        six.exec_(__fobj)
                         globals().update(locals())
                     except:
-                        print "An error has occured during the " + \
-                              "function import"
+                        print("An error has occured during the " + \
+                              "function import")
                         sys.excepthook(*sys.exc_info())
 
-                __args = pickle.loads(__sargs)
+                __args = pickle.loads(ppc.b_(__sargs))
             
-                __f = locals()[__fname]
+                __f = locals()[ppc.str_(__fname)]
                 try:
                     __result = __f(*__args)
                 except:
-                    print "An error has occured during the function execution"
+                    print("An error has occured during the function execution")
                     sys.excepthook(*sys.exc_info())
                     __result = None
 
@@ -106,7 +120,7 @@ class _WorkerProcess(object):
                 self.t.send(__sresult)
                 self.sout.truncate(0)
         except:
-            print "A fatal error has occured during the function execution"
+            print("A fatal error has occured during the function execution")
             sys.excepthook(*sys.exc_info())
             __result = None
             __sresult = pickle.dumps((__result, self.sout.getvalue()),
