@@ -164,7 +164,7 @@ http://arxiv.org/pdf/1202.1056 for further information.
 
 kwds = {
         "name" : "ppft",
-        "url" : "https://pypi.org/project/ppft",
+        "url" : "https://github.com/uqfoundation/ppft",
         "version" : VERSION,
         "download_url" : "https://github.com/uqfoundation/ppft/releases/download/ppft-%s/ppft-%s.tar.gz" % (stable_version, stable_version),
         "author" : "Mike McKerns",
