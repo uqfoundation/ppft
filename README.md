@@ -10,7 +10,7 @@ Parallel Python module (``pp``) provides an easy and efficient way to create par
 
 ``ppft`` is part of ``pathos``, a python framework for heterogeneous computing.
 ``ppft`` is in active development, so any user feedback, bug reports, comments,
-or suggestions are highly appreciated.  A list of issues is located at https://github.com/uqfoundation/ppft/issues, with a legacy list maintained at https://uqfoundation.github.io/pathos-issues.html.
+or suggestions are highly appreciated.  A list of issues is located at https://github.com/uqfoundation/ppft/issues, with a legacy list maintained at https://uqfoundation.github.io/project/pathos/query.
 
 NOTE: ``ppft`` installs as ``pp``. If ``pp`` is installed, it should be uninstalled before ``ppft`` is installed -- otherwise, ``import pp`` may not find the ``ppft`` fork.
 
@@ -68,8 +68,8 @@ acknowledge use of ``ppft`` by citing the following in your publication::
 
     Michael McKerns and Michael Aivazis,
     "pathos: a framework for heterogeneous computing", 2010- ;
-    https://uqfoundation.github.io/pathos.html
+    https://uqfoundation.github.io/project/pathos
 
-Please see https://uqfoundation.github.io/pathos.html or
+Please see https://uqfoundation.github.io/project/pathos or
 http://arxiv.org/pdf/1202.1056 for further information.
 
