@@ -197,9 +197,6 @@ if has_setuptools:
     kwds.update({
         "zip_safe" : False,
         "extras_require" : {'dill': ['dill>=0.3.4']},
-    })
-if has_setuptools and pyversion > 2:
-    kwds.update({
         "install_requires" : ['six>=1.7.3'],
     })
 
