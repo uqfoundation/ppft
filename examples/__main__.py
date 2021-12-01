@@ -10,7 +10,11 @@ import glob
 import os
 try:
     import pox
-    python = pox.which_python(fullpath=False) or 'python'
+    python = pox.which_python(fullpath=False)
+    if not python:
+        python = 'python'
+    elif not pox.which(python):
+        python = pox.which_python(fullpath=False, version=True)
 except ImportError:
     python = 'python'
 import subprocess as sp
