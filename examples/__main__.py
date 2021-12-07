@@ -8,17 +8,9 @@
 from __future__ import print_function
 import glob
 import os
-try:
-    import pox
-    python = pox.which_python(fullpath=False)
-    if not python:
-        python = 'python'
-    elif not pox.which(python):
-        python = pox.which_python(fullpath=False, version=True)
-except ImportError:
-    python = 'python'
 import subprocess as sp
-from sys import platform
+from sys import executable, platform
+python = executable or 'python'
 shell = platform[:3] == 'win'
 
 suite = os.path.dirname(__file__) or os.path.curdir
