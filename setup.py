@@ -1,7 +1,15 @@
 #!/usr/bin/env python
+#
+# Author: Mike McKerns (mmckerns @caltech and @uqfoundation)
+# Copyright (c) 2012-2016 California Institute of Technology.
+# Copyright (c) 2016-2022 The Uncertainty Quantification Foundation.
+# License: 3-clause BSD.  The full license text is available at:
+#  - https://github.com/uqfoundation/ppft/blob/master/LICENSE
+#
+# modified from the original (by M. McKerns):
 # Parallel Python setup script
-# For the latest version of the Parallel Python
-# software visit: http://www.parallelpython.com
+# Copyright (c) 2005-2012, Vitalii Vanovschi
+# All rights reserved.
 """
 Standard build tool for python libraries.
 """
