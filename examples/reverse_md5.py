@@ -8,18 +8,16 @@
 import math
 import sys
 import hashlib
-if sys.version_info[0] == 2:
-    import pp
-else:
-    import ppft as pp
+import ppft
 
 
 def md5test(hash, start, end):
     """Calculates md5 of the integers between 'start' and 'end' and
        compares it with 'hash'"""
-    from pp.common import b_
+    from hashlib import md5
+    from ppft.common import b_
     for x in range(start, end):
-        if hashlib.md5(b_(str(x))).hexdigest() == hash:
+        if md5(b_(str(x))).hexdigest() == hash:
             return x
 
 
@@ -36,15 +34,16 @@ ppservers = ()
 if len(sys.argv) > 1:
     ncpus = int(sys.argv[1])
     # Creates jobserver with ncpus workers
-    job_server = pp.Server(ncpus, ppservers=ppservers)
+    job_server = ppft.Server(ncpus, ppservers=ppservers)
 else:
     # Creates jobserver with automatically detected number of workers
-    job_server = pp.Server(ppservers=ppservers)
+    job_server = ppft.Server(ppservers=ppservers)
 
-print("Starting pp with %s workers" % job_server.get_ncpus())
+print("Starting ppft with %s workers" % job_server.get_ncpus())
 
 #Calculates md5 hash from the given number
-from pp.common import b_
+import hashlib
+from ppft.common import b_
 hash = hashlib.md5(b_("1829182")).hexdigest()
 print("hash = %s" % hash)
 #Now we will try to find the number with this hash value
@@ -67,12 +66,10 @@ for index in range(parts):
     # md5test - the function
     # (hash, starti, endi) - tuple with arguments for md5test
     # () - tuple with functions on which function md5test depends
-    # ("hashlib", "_hashlib") - tuple with module names which must be
-    # imported before md5test execution
+    # () - tuple with module names to be imported before md5test execution
     # jobs.append(job_server.submit(md5test, (hash, starti, endi),
     # globals=globals()))
-    jobs.append(job_server.submit(md5test, (hash, starti, endi),
-            (), ("hashlib", "_hashlib")))
+    jobs.append(job_server.submit(md5test, (hash, starti, endi), (), ()))
 
 # Retrieve results of all submited jobs
 for job in jobs:
