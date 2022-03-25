@@ -184,6 +184,7 @@ kwds = {
         "platforms" : ["Windows", "Linux", "Mac"],
         "long_description" : LONG_DESCRIPTION,
         "license" : "BSD-like",
+        "python_requires" : '>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*, !=3.6.*',
         "classifiers" : [
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
