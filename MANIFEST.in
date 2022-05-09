@@ -2,11 +2,13 @@ include COPYING
 include CHANGELOG
 include LICENSE
 include README*
+include MANIFEST.in
+include pyproject.toml
 include tox.ini
-recursive-include doc *
+recursive-include docs *
 recursive-include examples *
-recursive-include pp *
 recursive-include ppft *
+recursive-include pp *
 include .*
 prune .git
 prune .coverage

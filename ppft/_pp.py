@@ -64,10 +64,8 @@ from . import transport as pptransport
 from . import auto as ppauto
 from . import common as ppc
 
-copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
-Copyright (c) 2015-2016 California Institute of Technology.
-Copyright (c) 2016-2022 The Uncertainty Quantification Foundation."""
-__version__ = version = "1.6.6.5"
+copyright = ppc.copyright
+__version__ = version = ppc.__version__
 
 # Reconnect persistent rworkers in seconds.
 RECONNECT_WAIT_TIME = 5

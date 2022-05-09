@@ -7,10 +7,7 @@
 
 import math
 import sys
-if sys.version_info[0] == 2:
-    import pp
-else:
-    import ppft as pp
+import ppft as pp
 
 
 def isprime(n):

@@ -1,11 +1,13 @@
 [run]
-# source = */ppft/*
+# source = ppft
 include =
     */ppft/*
     */ppft/server/*
 omit = 
     */examples/*
     */tests/*
+    */pp/*
+    */pp/server/*
 branch = true
 # timid = true
 # parallel = true

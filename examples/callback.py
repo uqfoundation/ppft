@@ -14,10 +14,7 @@ try:
 except ImportError:
     import thread
 import sys
-if sys.version_info[0] == 2:
-    import pp
-else:
-    import ppft as pp
+import ppft as pp
 
 
 class Sum(object):

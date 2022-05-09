@@ -25,7 +25,8 @@
 # CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 # THE POSSIBILITY OF SUCH DAMAGE.
-"""Parallel Python Software, Auto-Discovery Service
+"""
+Parallel Python Software, Auto-Discovery Service
 
 http://www.parallelpython.com - updates, documentation, examples and support
 forums
@@ -38,10 +39,8 @@ import threading
 
 from . import common as ppc
 
-copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
-Copyright (c) 2015-2016 California Institute of Technology.
-Copyright (c) 2016-2022 The Uncertainty Quantification Foundation."""
-__version__ = version = "1.6.6.5"
+copyright = ppc.copyright
+__version__ = version = ppc.__version__
 
 # broadcast every 10 sec
 BROADCAST_INTERVAL = 10
