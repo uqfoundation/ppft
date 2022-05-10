@@ -26,10 +26,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 # THE POSSIBILITY OF SUCH DAMAGE.
 """
-Parallel Python Software, Auto-Discovery Service
-
-http://www.parallelpython.com - updates, documentation, examples and support
-forums
+ppft auto: an auto-discovery service
 """
 
 import socket

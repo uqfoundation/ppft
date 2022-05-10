@@ -26,10 +26,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 # THE POSSIBILITY OF SUCH DAMAGE.
 """
-Parallel Python Software, Common Tools
-
-http://www.parallelpython.com - updates, documentation, examples and support
-forums
+ppft common: a set of common utilities
 """
 
 import threading

@@ -4,13 +4,11 @@ distributed and parallel python
 
 About Ppft
 ----------
-``ppft`` is a friendly fork of Parallel Python. ``ppft`` extends Parallel Python to provide packaging and distribution with ``pip`` and ``setuptools``, support for python 3, and enhanced serialization using ``dill.source``. ``ppft`` uses Parallel Python to provide mechanisms for the parallel execution of python code on SMP (systems with multiple processors or cores) and clusters (computers connected via network).
+``ppft`` is a friendly fork of Parallel Python (``pp``). ``ppft`` extends Parallel Python to provide packaging and distribution with ``pip`` and ``setuptools``, support for python 3, and enhanced serialization using ``dill.source``. ``ppft`` uses Parallel Python to provide mechanisms for the parallel execution of python code on SMP (systems with multiple processors or cores) and clusters (computers connected via network).
 
 Software written in python finds applications in a broad range of the categories including business logic, data analysis, and scientific calculations. This together with wide availability of SMP computers (multi-processor or multi-core) and clusters (computers connected via network) on the market create the demand in parallel execution of python code.
 
-The most common way to write parallel applications for SMP computers is to use threads. However, the python interpreter uses the GIL (Global Interpreter Lock) for internal bookkeeping, where the GIL only allows one python byte-code instruction to execute at a time, even on an SMP computer. Parallel Python overcomes this limitation, and provides a simple way to write parallel python applications. Internally, processes and IPC (Inter Process Communications) are used to organize parallel computations. Parallel Python is written so that the details and complexity of IPC are handled internally, and the calling application just submits jobs and retrieves the results. Software written with Parallel Python works in parallel on many computers connected via a local network or the Internet. Cross-platform portability and dynamic load-balancing allows Parallel Python to parallelize computations efficiently even on heterogeneous and multi-platform clusters.
-
-Visit http://www.parallelpython.com for further information.
+The most common way to write parallel applications for SMP computers is to use threads. However, the python interpreter uses the GIL (Global Interpreter Lock) for internal bookkeeping, where the GIL only allows one python byte-code instruction to execute at a time, even on an SMP computer. Parallel Python overcomes this limitation, and provides a simple way to write parallel python applications. Internally, processes and IPC (Inter Process Communications) are used to organize parallel computations. Parallel Python is written so that the details and complexity of IPC are handled internally, and the calling application just submits jobs and retrieves the results. Software written with Parallel Python works in parallel on many computers connected via a local network or the Internet. Cross-platform portability and dynamic load-balancing allows Parallel Python to parallelize computations efficiently even on heterogeneous and multi-platform clusters. Visit http://www.parallelpython.com for further information on Parallel Python.
 
 ``ppft`` is part of ``pathos``, a python framework for heterogeneous computing.
 ``ppft`` is in active development, so any user feedback, bug reports, comments,
@@ -66,7 +64,7 @@ To include enhanced serialization, using ``dill.source``, install::
 
     $ pip install ppft[dill]
 
-If Parallel Python is already installed, it should be uninstalled before ``ppft`` is installed -- otherwise, ``import pp`` may not point to the ``ppft`` fork.
+If Parallel Python is already installed, it should be uninstalled before ``ppft`` is installed -- otherwise, ``import pp`` may point to the original and not to the ``ppft`` fork.
 
 
 Requirements

@@ -5,11 +5,8 @@
 # Copyright (c) 2016-2022 The Uncertainty Quantification Foundation.
 # License: 3-clause BSD.  The full license text is available at:
 #  - https://github.com/uqfoundation/ppft/blob/master/LICENSE
-"""
-ppft worker: ppworker to communicate with ppserver
-"""
 from ppft.__main__ import *
-from ppft.__main__ import _WorkerProcess, __version__
+from ppft.__main__ import _WorkerProcess, __version__, __doc__
 
 
 if __name__ == "__main__":

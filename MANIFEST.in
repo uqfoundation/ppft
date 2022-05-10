@@ -9,6 +9,7 @@ recursive-include docs *
 recursive-include examples *
 recursive-include ppft *
 recursive-include pp *
+recursive-include scripts *
 include .*
 prune .git
 prune .coverage
