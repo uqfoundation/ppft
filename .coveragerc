@@ -16,6 +16,13 @@ branch = true
 # data_file = ./.coverage
 # debug = trace
 
+[paths]
+source =
+    ppft
+    ppft/server
+    */site-packages/ppft*/ppft
+    */site-packages/ppft*/ppft/server
+
 [report]
 include =
     */ppft/*
