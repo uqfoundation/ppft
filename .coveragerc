@@ -20,8 +20,10 @@ branch = true
 source =
     ppft
     ppft/server
-    */site-packages/ppft*/ppft
-    */site-packages/ppft*/ppft/server
+    */site-packages/ppft
+    */site-packages/ppft/server
+    */site-packages/ppft-*/ppft
+    */site-packages/ppft-*/ppft/server
 
 [report]
 include =
