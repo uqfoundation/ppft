@@ -6,8 +6,8 @@
 # License: 3-clause BSD.  The full license text is available at:
 #  - https://github.com/uqfoundation/ppft/blob/master/LICENSE
 
-# author, version, license, and long description
-__version__ = '1.6.6.5.dev0' #FIXME: near-duplicate in common.__version__
+# author, version, license, and long description #FIXME: common.__version__
+__version__ = '1.6.6.5.dev0'
 __author__ = 'Mike McKerns'
 
 __doc__ = """
@@ -99,8 +99,9 @@ Optional requirements:
 More Information
 ================
 
-Probably the best way to get started is to look at the set of example scripts
-in ``ppft.examples``. You can run the test suite with ``python -m ppft.tests``.
+Probably the best way to get started is to look at the documentation at
+http://ppft.rtfd.io. Also, you can see a set of example scripts in
+``ppft.examples``. You can run the test suite with ``python -m ppft.tests``.
 ``ppft`` will create and execute jobs on local workers (automatically created
 using ``python -u -m ppft``). Additionally, remote servers can be created with 
 ``ppserver`` (or ``python -m ppft.server``), and then jobs can be distributed
@@ -171,16 +172,12 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 """
 
-try:
-    # This is a hack to import a minimal package for the build process
-    __PPFT_SETUP__
-except NameError:
-    from ._pp import *
-    from ._pp import _USE_SUBPROCESS, _Task, _Worker, _RWorker, _Statistics
-    from . import auto
-    from . import common
-    from . import transport
-    from . import worker
+from ._pp import *
+from ._pp import _USE_SUBPROCESS, _Task, _Worker, _RWorker, _Statistics
+from . import auto
+from . import common
+from . import transport
+from . import worker
 
 
 def license():
