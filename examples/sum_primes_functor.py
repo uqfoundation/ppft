@@ -6,10 +6,7 @@
 # Parallel Python Software: http://www.parallelpython.com
 
 import math, sys
-if sys.version_info[0] == 2:
-    import pp
-else:
-    import ppft as pp
+import ppft as pp
 
 
 def isprime(n):

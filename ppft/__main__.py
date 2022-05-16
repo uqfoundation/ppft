@@ -26,10 +26,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 # THE POSSIBILITY OF SUCH DAMAGE.
 """
-Parallel Python Software, PP Worker
-
-http://www.parallelpython.com - updates, documentation, examples and support
-forums
+ppft worker: a worker to communicate with ppserver
 """
 import sys
 import os
@@ -49,10 +46,8 @@ import six
 from . import transport as pptransport
 from . import common as ppc
 
-copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
-Copyright (c) 2015-2016 California Institute of Technology.
-Copyright (c) 2016-2022 The Uncertainty Quantification Foundation."""
-__version__ = version = "1.6.6.5"
+copyright = ppc.copyright
+__version__ = version = ppc.__version__
 
 
 def preprocess(msg):

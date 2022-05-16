@@ -1,11 +1,13 @@
 [run]
-# source = */ppft/*
+# source = ppft
 include =
     */ppft/*
     */ppft/server/*
 omit = 
     */examples/*
     */tests/*
+    */pp/*
+    */pp/server/*
 branch = true
 # timid = true
 # parallel = true
@@ -13,6 +15,15 @@ branch = true
 # data_file = $TRAVIS_BUILD_DIR/.coverage
 # data_file = ./.coverage
 # debug = trace
+
+[paths]
+source =
+    ppft
+    ppft/server
+    */site-packages/ppft
+    */site-packages/ppft/server
+    */site-packages/ppft-*/ppft
+    */site-packages/ppft-*/ppft/server
 
 [report]
 include =

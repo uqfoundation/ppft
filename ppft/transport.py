@@ -26,10 +26,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 # THE POSSIBILITY OF SUCH DAMAGE.
 """
-Parallel Python Software, PP Transport
-
-http://www.parallelpython.com - updates, documentation, examples and support
-forums
+ppft transport: parallel python transport
 """
 
 import logging
@@ -37,12 +34,6 @@ import os
 import socket
 import struct
 import six
-
-copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
-Copyright (c) 2015-2016 California Institute of Technology.
-Copyright (c) 2016-2022 The Uncertainty Quantification Foundation."""
-__version__ = version = "1.6.6.5"
-
 
 # compatibility with Python 2.6
 try:
@@ -56,6 +47,9 @@ except ImportError:
     md5_new = md5.new
 
 from . import common as ppc
+
+copyright = ppc.copyright
+__version__ = version = ppc.__version__
 
 class Transport(object):
 

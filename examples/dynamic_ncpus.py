@@ -10,10 +10,7 @@
 import math
 import sys
 import time
-if sys.version_info[0] == 2:
-    import pp
-else:
-    import ppft as pp
+import ppft as pp
 
 
 def part_sum(start, end):

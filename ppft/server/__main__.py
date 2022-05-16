@@ -27,10 +27,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
 # THE POSSIBILITY OF SUCH DAMAGE.
 """
-Parallel Python Software, Network Server
-
-http://www.parallelpython.com - updates, documentation, examples and support
-forums
+ppft server: the parallel python network server
 """
 import atexit
 import logging
@@ -46,15 +43,13 @@ import time
 import os
 import six
 
-import pp
-import pp.auto as ppauto
-import pp.common as ppc
-import pp.transport as pptransport
+import ppft as pp
+import ppft.auto as ppauto
+import ppft.common as ppc
+import ppft.transport as pptransport
 
-copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
-Copyright (c) 2015-2016 California Institute of Technology.
-Copyright (c) 2016-2022 The Uncertainty Quantification Foundation."""
-__version__ = version = "1.6.6.5"
+copyright = ppc.copyright
+__version__ = version = ppc.__version__
 
 LISTEN_SOCKET_TIMEOUT = 20
 
@@ -416,6 +411,7 @@ def create_network_server(argv):
 def signal_handler(signum, stack):
     """Prints server stats when %s is received (unix only). """ % STAT_SIGNAL
     server.print_stats()
+
 
 if __name__ == "__main__":
     server = create_network_server(sys.argv[1:])
