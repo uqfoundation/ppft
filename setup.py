@@ -116,7 +116,7 @@ class BinaryDistribution(Distribution):
 
 # define dependencies
 six_version = 'six>=1.7.3'
-dill_version = 'dill>=0.3.4'
+dill_version = 'dill>=0.3.5'
 # add dependencies
 depend = [six_version]
 extras = {'dill': [dill_version]}

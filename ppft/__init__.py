@@ -93,7 +93,7 @@ Requirements
 
 Optional requirements:
 
-    - ``dill``, **>=0.3.4**
+    - ``dill``, **>=0.3.5**
 
 
 More Information
