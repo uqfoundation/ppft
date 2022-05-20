@@ -7,7 +7,7 @@
 #  - https://github.com/uqfoundation/ppft/blob/master/LICENSE
 
 # author, version, license, and long description #FIXME: common.__version__
-__version__ = '1.7.6.5'
+__version__ = '1.7.6.6.dev0'
 __author__ = 'Mike McKerns'
 
 __doc__ = """
