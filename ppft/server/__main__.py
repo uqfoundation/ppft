@@ -41,7 +41,6 @@ import string
 import signal
 import time
 import os
-import six
 
 import ppft as pp
 import ppft.auto as ppauto
@@ -56,13 +55,8 @@ LISTEN_SOCKET_TIMEOUT = 20
 # compatibility with Jython
 STAT_SIGNAL = 'SIGUSR1' if 'java' not in sys.platform else 'SIGUSR2'
 
-# compatibility with Python 2.6
-try:
-    import hashlib
-    sha_new = hashlib.sha1
-except ImportError:
-    import sha
-    sha_new = sha.new
+import hashlib
+sha_new = hashlib.sha1
 
 
 class _NetworkServer(pp.Server):
@@ -76,7 +70,7 @@ class _NetworkServer(pp.Server):
                 proto, socket_timeout)
         if pid_file:
           with open(pid_file, 'w') as pfile:
-            six.print_(os.getpid(), file=pfile)
+            print(os.getpid(), file=pfile)
           atexit.register(os.remove, pid_file)
         self.host = interface
         self.bcast = broadcast
@@ -230,12 +224,12 @@ def parse_config(file_loc):
     except ImportError:
         ie = sys.exc_info()[1]
        #sysstderr = getattr(sys.stderr, 'buffer', sys.stderr)
-        six.print_(("ERROR: You must have config obj installed to use"
-                "configuration files. You can still use command line switches."), file=sys.stderr)
+        print(("ERROR: You must have config obj installed to use"
+               "configuration files. You can still use command line switches."), file=sys.stderr)
         sys.exit(1)
 
     if not os.access(file_loc, os.F_OK):
-        six.print_("ERROR: Can not access %s." % arg, file=sys.stderr)
+        print("ERROR: Can not access %s." % arg, file=sys.stderr)
         sys.exit(1)
 
     args = {}

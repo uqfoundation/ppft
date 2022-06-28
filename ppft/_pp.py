@@ -37,17 +37,13 @@ import sys
 import types
 import time
 import atexit
-try:
-    import user
-except ImportError:
-    user = types  # using as a stub
+user = types  # using as a stub
 try:
     import dill as pickle
     from dill.source import importable
     from dill.source import getname
 except ImportError:
-    try: import cPickle as pickle
-    except ImportError: import pickle
+    import pickle
     def importable(func): # the original code
         #get lines of the source and adjust indent
         sourcelines = inspect.getsourcelines(func)[0]
@@ -56,7 +52,6 @@ except ImportError:
         return "".join(sourcelines)
     def getname(obj): # just get __name__
         return obj.__name__
-import six
 from . import transport as pptransport
 from . import auto as ppauto
 from . import common as ppc
@@ -70,18 +65,8 @@ RECONNECT_WAIT_TIME = 5
 # If set to true prints out the exceptions which are expected.
 SHOW_EXPECTED_EXCEPTIONS = False
 
-# we need to have set even in Python 2.3
-try:
-    set
-except NameError:
-    from sets import Set as set 
-
-_USE_SUBPROCESS = False
-try:
-    import subprocess
-    _USE_SUBPROCESS = True
-except ImportError:
-    import popen2
+import subprocess
+_USE_SUBPROCESS = True
 
 
 
@@ -137,7 +122,7 @@ class _Task(object):
         self.result, sout = pickle.loads(ppc.b_(self.sresult))
         self.unpickled = True
         if len(sout) > 0:
-            six.print_(sout, end=' ')
+            print(sout, end=' ')
         if self.callback:
             args = self.callbackargs + (self.result, )
             self.callback(*args)
@@ -158,13 +143,9 @@ class _Worker(object):
 
     def start(self):
         """Starts local worker"""
-        if _USE_SUBPROCESS:
-            proc = subprocess.Popen(self.command, stdin=subprocess.PIPE,
-                    stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            self.t = pptransport.CPipeTransport(proc.stdout, proc.stdin)
-        else:
-            self.t = pptransport.CPipeTransport(
-                    *popen2.popen3(self.command)[:2])
+        proc = subprocess.Popen(self.command, stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        self.t = pptransport.CPipeTransport(proc.stdout, proc.stdin)
 
        #open('/tmp/pp.debug', 'a+').write('Starting _Worker\n')
        #open('/tmp/pp.debug', 'a+').write('receiving... \n')
@@ -449,7 +430,7 @@ class Server(object):
 
         tid = self.__gentid()
 
-        other_type = types.FunctionType if six.PY3 else types.ClassType
+        other_type = types.FunctionType
         if globals:
             modules += tuple(self.__find_modules("", globals))
             modules = tuple(set(modules))
@@ -468,7 +449,7 @@ class Server(object):
 
         # if the function is a method of a class add self to the arguments list
         if isinstance(func, types.MethodType):
-            func_self = func.__self__ if six.PY3 else func.im_self
+            func_self = func.__self__
             if func_self is not None:
                 args = (func_self, ) + args
 
@@ -476,11 +457,10 @@ class Server(object):
         # whole class to dependancies
         for arg in args:
             # Checks for both classic or new class instances
-            if (six.PY2 and isinstance(arg, types.InstanceType)) \
-                        or str(type(arg))[:6] == "<class":
+            if str(type(arg))[:6] == "<class":
                 # in PY3, all instances are <class... so skip the builtins
                 if getattr(inspect.getmodule(arg), '__name__', None) \
-                   in ['builtins', '__builtin__', None]: pass
+                   in ['builtins', None]: pass
                 # do not include source for imported modules
                 elif ppc.is_not_imported(arg, modules):
                     depfuncs += tuple(ppc.get_class_hierarchy(arg.__class__))

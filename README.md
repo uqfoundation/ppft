@@ -74,7 +74,6 @@ Requirements
 
 * ``python`` (or ``pypy``), **>=3.7**
 * ``setuptools``, **>=42**
-* ``six``, **>=1.7.3**
 
 Optional requirements:
 

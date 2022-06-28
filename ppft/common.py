@@ -30,7 +30,7 @@ ppft common: a set of common utilities
 """
 
 import threading
-try: # workaround for install process
+try: # for backward compatibilty
     import six
 except ImportError:
     import types
@@ -38,27 +38,20 @@ except ImportError:
     six = types.ModuleType('six')
     six.PY3 = sys.version_info[0] == 3
     six.b = lambda x:x
-if six.PY3:
-    long = int
-    import io
-    file = io.IOBase
-    def str_(byte): # convert to unicode
-        if not hasattr(byte, 'decode'): return byte
-        try:
-            return byte.decode('ascii')
-        except UnicodeDecodeError: # non-ascii needs special handling
-            return repr([i for i in byte])+'{B}'
-    def b_(string):
-        if not hasattr(string, 'encode'): return string
-        if not string.endswith(']{B}'): return six.b(string)
-        return bytes(eval(string[:-3])) # special handling for non-ascii
-else:
-    long = long
-    file = file
-    def str_(string): # is already str
-        return string
-    def b_(string):
-        return six.b(string)
+    del types, sys
+long = int
+import io
+file = io.IOBase
+def str_(byte): # convert to unicode
+    if not hasattr(byte, 'decode'): return byte
+    try:
+        return byte.decode('ascii')
+    except UnicodeDecodeError: # non-ascii needs special handling
+        return repr([i for i in byte])+'{B}'
+def b_(string):
+    if not hasattr(string, 'encode'): return string
+    if not string.endswith(']{B}'): return string.encode('latin-1')
+    return bytes(eval(string[:-3])) # special handling for non-ascii
 
 # copyright, including original from Parallel Python
 copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.

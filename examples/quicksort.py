@@ -7,13 +7,6 @@
 
 import sys, random
 import ppft as pp
-try:
-    callable(min)
-except NameError:
-    def callable(x):
-        import collections
-        _Callable = getattr(collections, 'Callable', None) or getattr(collections.abc, 'Callable')
-        return isinstance(x, _Callable)
 
 def quicksort(a, n=-1, srv=None):
     if len(a) <= 1:

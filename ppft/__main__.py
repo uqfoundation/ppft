@@ -30,19 +30,12 @@ ppft worker: a worker to communicate with ppserver
 """
 import sys
 import os
-try:
-    import io
-    ioStringIO = io.StringIO
-   #ioStringIO = io.BytesIO
-except ImportError:
-    import StringIO as io
-    ioStringIO = io.StringIO
+import io
+ioStringIO = io.StringIO
 try:
     import dill as pickle
 except ImportError:
-    try: import cPickle as pickle
-    except ImportError: import pickle
-import six
+    import pickle
 from . import transport as pptransport
 from . import common as ppc
 
@@ -57,7 +50,7 @@ def preprocess(msg):
         try:            
             if not module.startswith("from ") and not module.startswith("import "):
                 module = "import " + module
-            six.exec_(module)
+            exec(module)
             globals().update(locals())
         except:
             print("An error has occured during the module import")
@@ -92,7 +85,7 @@ class _WorkerProcess(object):
 
                 for __fobj in __fobjs:
                     try:
-                        six.exec_(__fobj)
+                        exec(__fobj)
                         globals().update(locals())
                     except:
                         print("An error has occured during the " + \

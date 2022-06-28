@@ -109,17 +109,16 @@ class BinaryDistribution(Distribution):
         return True
 
 # define dependencies
-six_version = 'six>=1.7.3'
 dill_version = 'dill>=0.3.5.1'
 # add dependencies
-depend = [six_version]
+depend = []
 extras = {'dill': [dill_version]}
 # update setup kwds
 if has_setuptools:
     setup_kwds.update(
         zip_safe=False,
         # distclass=BinaryDistribution,
-        install_requires=depend,
+        # install_requires=depend,
         extras_require=extras,
     )
 
@@ -128,12 +127,11 @@ setup(**setup_kwds)
 
 # if dependencies are missing, print a warning
 try:
-    import six
     #import dill
+    pass
 except ImportError:
     print("\n***********************************************************")
     print("WARNING: One of the following dependencies is unresolved:")
-    print("    %s" % six_version)
     print("    %s (optional)" % dill_version)
     print("***********************************************************\n")
 

@@ -29,8 +29,6 @@
 """
 ppft server: the parallel python network server
 """
-from __future__ import with_statement
-
 import atexit
 import logging
 import errno
@@ -43,7 +41,6 @@ import string
 import signal
 import time
 import os
-import six
 
 import ppft as pp
 import ppft.auto as ppauto
@@ -58,13 +55,8 @@ LISTEN_SOCKET_TIMEOUT = 20
 # compatibility with Jython
 STAT_SIGNAL = 'SIGUSR1' if 'java' not in sys.platform else 'SIGUSR2'
 
-# compatibility with Python 2.6
-try:
-    import hashlib
-    sha_new = hashlib.sha1
-except ImportError:
-    import sha
-    sha_new = sha.new
+import hashlib
+sha_new = hashlib.sha1
 
 
 class _NetworkServer(pp.Server):
@@ -78,7 +70,7 @@ class _NetworkServer(pp.Server):
                 proto, socket_timeout)
         if pid_file:
           with open(pid_file, 'w') as pfile:
-            six.print_(os.getpid(), file=pfile)
+            print(os.getpid(), file=pfile)
           atexit.register(os.remove, pid_file)
         self.host = interface
         self.bcast = broadcast
@@ -232,13 +224,17 @@ def parse_config(file_loc):
     except ImportError:
         ie = sys.exc_info()[1]
        #sysstderr = getattr(sys.stderr, 'buffer', sys.stderr)
-        six.print_(("ERROR: You must have config obj installed to use"
-                "configuration files. You can still use command line switches."), file=sys.stderr)
+        print(("ERROR: You must have config obj installed to use"
+               "configuration files. You can still use command line switches."), file=sys.stderr)
         sys.exit(1)
 
     if not os.access(file_loc, os.F_OK):
-        six.print_("ERROR: Can not access %s." % arg, file=sys.stderr)
+        print("ERROR: Can not access %s." % arg, file=sys.stderr)
         sys.exit(1)
+
+    args = {}
+    autodiscovery = False
+    debug = False
 
     # Load the configuration file
     config = ConfigObj(file_loc)
@@ -271,7 +267,7 @@ def parse_config(file_loc):
         pass
 
     try:
-        args['loglevel'] = config['general'].as_bool('debug')
+        debug = config['general'].as_bool('debug')
     except:
         pass
 
@@ -305,7 +301,7 @@ def parse_config(file_loc):
     except:
         pass
     # Return a tuple of the args dict and autodiscovery variable
-    return args, autodiscovery
+    return args, autodiscovery, debug
 
 
 def print_usage():
@@ -354,6 +350,7 @@ def create_network_server(argv):
 
     args = {}
     autodiscovery = False
+    debug = False
 
     log_level = logging.WARNING
     log_format = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -363,10 +360,9 @@ def create_network_server(argv):
             print_usage()
             sys.exit()
         elif opt == "-c":
-            args, autodiscovery = parse_config(arg)
+            args, autodiscovery, debug = parse_config(arg)
         elif opt == "-d":
-            log_level = logging.DEBUG
-            pp.SHOW_EXPECTED_EXCEPTIONS = True
+            debug = True
         elif opt == "-f":
             log_format = arg
         elif opt == "-i":
@@ -391,6 +387,10 @@ def create_network_server(argv):
             args["socket_timeout"] = int(arg)
         elif opt == "-P":
             args["pid_file"] = arg
+
+    if debug:
+        log_level = logging.DEBUG
+        pp.SHOW_EXPECTED_EXCEPTIONS = True
 
     log_handler = logging.StreamHandler()
     log_handler.setFormatter(logging.Formatter(log_format))

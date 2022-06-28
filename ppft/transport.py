@@ -33,18 +33,10 @@ import logging
 import os
 import socket
 import struct
-import six
 
-# compatibility with Python 2.6
-try:
-    import hashlib
-    sha_new = hashlib.sha1
-    md5_new = hashlib.md5
-except ImportError:
-    import sha
-    import md5
-    sha_new = sha.new
-    md5_new = md5.new
+import hashlib
+sha_new = hashlib.sha1
+md5_new = hashlib.md5
 
 from . import common as ppc
 
@@ -135,13 +127,13 @@ class PipeTransport(Transport):
         else:
             raise TypeError("Both arguments of PipeTransport constructor " \
                     "must be file objects")
-        if six.PY3 and hasattr(self.w, 'buffer'):
+        if hasattr(self.w, 'buffer'):
             self.wb = self.w.buffer
             self.has_wb = True
         else:
             self.wb = self.w
             self.has_wb = False
-        if six.PY3 and hasattr(self.r, 'buffer'):
+        if hasattr(self.r, 'buffer'):
             self.rb = self.r.buffer
             self.has_rb = True
         else:

@@ -9,10 +9,7 @@
 
 import math
 import time
-try:
-    import _thread as thread
-except ImportError:
-    import thread
+import _thread as thread
 import sys
 import ppft as pp
 
