@@ -98,7 +98,7 @@ setup_kwds = dict(
     ],
     packages = ['ppft', 'ppft.tests', 'ppft.server', 'pp', 'pp.server'],
     package_dir = {'ppft':'ppft', 'pp':'pp', 'ppft.server':'ppft/server', \
-                   'ppft.tests':'examples', 'pp.server':'pp/server'},
+                   'ppft.tests':'ppft/tests', 'pp.server':'pp/server'},
     scripts = ['scripts/ppserver'],
 )
 

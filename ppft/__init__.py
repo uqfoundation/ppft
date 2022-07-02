@@ -99,7 +99,7 @@ More Information
 
 Probably the best way to get started is to look at the documentation at
 http://ppft.rtfd.io. Also, you can see a set of example scripts in
-``ppft.examples``. You can run the test suite with ``python -m ppft.tests``.
+``ppft.tests``. You can run the test suite with ``python -m ppft.tests``.
 ``ppft`` will create and execute jobs on local workers (automatically created
 using ``python -u -m ppft``). Additionally, remote servers can be created with 
 ``ppserver`` (or ``python -m ppft.server``), and then jobs can be distributed
