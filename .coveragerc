@@ -4,7 +4,6 @@ include =
     */ppft/*
     */ppft/server/*
 omit = 
-    */examples/*
     */tests/*
     */pp/*
     */pp/server/*
