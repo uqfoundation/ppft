@@ -57,7 +57,17 @@ def b_(string):
 copyright = """Copyright (c) 2005-2012 Vitalii Vanovschi.
 Copyright (c) 2015-2016 California Institute of Technology.
 Copyright (c) 2016-2022 The Uncertainty Quantification Foundation."""
-__version__ = version = "1.7.6.6" # use release/target version only
+try: # the package is installed
+    from .__info__ import __version__ as version
+except: # pragma: no cover
+    import os
+    import sys
+    parent = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
+    sys.path.append(parent)
+    # get distribution meta info 
+    from version import __version__ as version
+    del os, sys, parent
+__version__ = version = version.rstrip('.dev0') # release/target version only
 
 def start_thread(name,  target,  args=(),  kwargs={},  daemon=True):
     """Starts a thread"""
