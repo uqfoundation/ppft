@@ -24,8 +24,13 @@ tests = [f for f in tests if not os.path.basename(f).startswith('__')]
 
 if __name__ == '__main__':
 
+    failed = 0
     for test in tests:
         p = sp.Popen([python, test], shell=shell).wait()
-        if not p:
+        if p:
+            print('F', end='', flush=True)
+            failed = 1
+        else:
             print('.', end='', flush=True)
     print('')
+    exit(failed)
