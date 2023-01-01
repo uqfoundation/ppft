@@ -1,7 +1,7 @@
 # Parallel Python Software: http://www.parallelpython.com
 # Copyright (c) 2005-2012 Vitalii Vanovschi.
 # Copyright (c) 2015-2016 California Institute of Technology.
-# Copyright (c) 2016-2022 The Uncertainty Quantification Foundation.
+# Copyright (c) 2016-2023 The Uncertainty Quantification Foundation.
 # All rights reserved.
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
