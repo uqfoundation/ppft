@@ -9,6 +9,7 @@ ppft package documentation
     :private-members:
     :special-members:
     :show-inheritance:
+    :imported-members:
 
 .. toctree::
     :maxdepth: 2
