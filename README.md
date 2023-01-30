@@ -80,6 +80,98 @@ Optional requirements:
 * ``dill``, **>=0.3.6**
 
 
+Basic Usage
+-----------
+``ppft`` is a fork of the ParalelPython package (``pp``) that has been
+converted from Python 2 to Python 3, made PEP 517 compliant, and augmented
+with ``dill.source``.  For simple parallel execution, first create a job
+``Server`` where the number nodes available is autodetected::
+
+    >>> import ppft as pp
+    >>> job_server = pp.Server()
+
+The number of nodes can be specified by passing an int as the first argument
+when creating the server (i.e. ``Server(4)`` creates a server with four nodes).
+The server uses ``submit`` to execute jobs in parallel. ``submit`` takes a
+function, a tuple of the arguments to pass to the function, a tuple of any
+functions used but not imported in the function, and a tuple of any modules
+required to produce the function:: 
+
+    >>> import math
+    >>> f1 = job_server.submit(math.sin, (math.pi/2,), (), ('math',))
+    >>> f2 = job_server.submit(min, (3.2, 10.0, 7.5), (), ())
+    >>> f3 = job_server.submit(sum, ([1,2,3],), (), ())
+
+The functions are serialized by ``dill.source`` (as opposed to ``dill``), by
+extracting and passing the source code to the server. The server compiles
+and executes the source code, and then calls the function with the arguments
+passed in the tuple. Any function and module dependencies are imported
+before ``exec`` is called on the source code. Results are retrieved by
+calling the object returned from ``submit``::
+
+    >>> f1()
+    1.0
+    >>> f2()
+    3.2
+    >>> f3()
+    6
+
+Job server execution statistics can be printed with::
+
+    >>> job_server.print_stats()
+    Job execution statistics:
+     job count | % of all jobs | job time sum | time per job | job server
+             3 |        100.00 |       0.0051 |     0.001684 | local
+    Time elapsed since server creation 148.48280715942383
+    0 active tasks, 4 cores
+
+``ppft`` also can execute jobs on remote computational nodes, if a ``ppserver``
+is first started on the node. Here the ``ppserver`` is started on 127.0.0.1,
+and will listen on port 35000::
+
+    $ ppserver -p 35000
+
+Then, locally, instantiate a ``Server`` with the connection information
+for the remote node, submit some jobs, and retrieve the results::
+
+    >>> job_server = pp.Server(ppservers=('127.0.0.1:35000',))
+    >>> f1 = job_server.submit(math.sin, (math.pi/2,), (), ('math',))
+    >>> f2 = job_server.submit(math.sin, (0,), (), ('math',))
+    >>> f3 = job_server.submit(math.sin, (-math.pi/2,), (), ('math',))
+    >>> f1(),f2(),f3()
+    (1.0, 0.0, -1.0)
+    >>> 
+
+Get help on the command line options for ``ppserver``::
+
+    $ ppserver --help
+    Parallel Python Network Server (pp-1.7.6.7)
+    Usage: ppserver [-hdar] [-f format] [-n proto] [-c config_path] [-i interface] [-b broadcast] [-p port] [-w nworkers] [-s secret] [-t seconds] [-k seconds] [-P pid_file]
+
+    Options: 
+    -h                 : this help message
+    -d                 : set log level to debug
+    -f format          : log format
+    -a                 : enable auto-discovery service
+    -r                 : restart worker process after each task completion
+    -n proto           : protocol number for pickle module
+    -c path            : path to config file
+    -i interface       : interface to listen
+    -b broadcast       : broadcast address for auto-discovery service
+    -p port            : port to listen
+    -w nworkers        : number of workers to start
+    -s secret          : secret for authentication
+    -t seconds         : timeout to exit if no connections with clients exist
+    -k seconds         : socket timeout in seconds
+    -P pid_file        : file to write PID to
+
+    To print server stats send SIGUSR1 to its main process (unix only). 
+
+    Due to the security concerns always use a non-trivial secret key.
+    Secret key set by -s switch will override secret key assigned by
+    pp_secret variable in .pythonrc.py
+
+
 More Information
 ----------------
 Probably the best way to get started is to look at the documentation at
