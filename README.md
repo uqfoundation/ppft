@@ -129,7 +129,7 @@ Job server execution statistics can be printed with::
 is first started on the node. Here the ``ppserver`` is started on 127.0.0.1,
 and will listen on port 35000::
 
-    $ ppserver -p 35000
+    $ ppserver -a -p 35000
 
 Then, locally, instantiate a ``Server`` with the connection information
 for the remote node, submit some jobs, and retrieve the results::
@@ -141,6 +141,38 @@ for the remote node, submit some jobs, and retrieve the results::
     >>> f1(),f2(),f3()
     (1.0, 0.0, -1.0)
     >>> 
+
+However, the stats show that all of the jobs were run locally::
+
+    >>> job_server.print_stats()
+    Job execution statistics:
+     job count | % of all jobs | job time sum | time per job | job server
+             3 |        100.00 |       0.0024 |     0.000812 | local
+    Time elapsed since server creation 31.755322217941284
+    0 active tasks, 4 cores
+
+This is due because we don't specify the number of nodes. The number of nodes
+are specified both in the ``ppserver`` and in the local job ``Server``. Thus,
+the above is actually "autobalance" between 4 local nodes and 4 remote nodes.
+The former is naturally going to be preferred; however, if the local server is
+flooded with jobs, some will get sent to the remote ``ppserver``, and that will
+be reflected in the stats.  To run all jobs remotely, set the number of local
+nodes to zero::
+
+    >>> job_server = pp.Server(0, ppservers=('127.0.0.1:35000',))
+    >>> f1 = job_server.submit(math.sin, (math.pi/2,), (), ('math',))
+    >>> f2 = job_server.submit(math.sin, (0,), (), ('math',))
+    >>> f3 = job_server.submit(math.sin, (-math.pi/2,), (), ('math',))
+    >>> f1(),f2(),f3()
+    (1.0, 0.0, -1.0)
+    >>> job_server.print_stats()
+    Job execution statistics:
+     job count | % of all jobs | job time sum | time per job | job server
+             3 |        100.00 |       0.0016 |     0.000518 | 127.0.0.1:35000
+    Time elapsed since server creation 15.123202800750732
+    0 active tasks, 0 cores
+
+>>> 
 
 Get help on the command line options for ``ppserver``::
 
