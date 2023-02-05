@@ -4,12 +4,7 @@ ppft package documentation
 ==========================
 
 .. automodule:: ppft
-    :members:
-    :undoc-members:
-    :private-members:
-    :special-members:
-    :show-inheritance:
-    :imported-members:
+..  :exclude-members: +
 
 .. toctree::
     :maxdepth: 2
