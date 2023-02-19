@@ -254,14 +254,14 @@ class Template(object):
            func - function to be executed
            depfuncs - tuple with functions which might be called from 'func'
            modules - tuple with module names to import
-           callback - callback function which will be called with argument
-                   list equal to callbackargs+(result,)
-                   as soon as calculation is done
+           callback - function which will be called with argument list equal \
+                   to callbackargs+(result,) as soon as calculation is done
            callbackargs - additional arguments for callback function
-           group - job group, is used when wait(group) is called to wait for
-           jobs in a given group to finish
-           globals - dictionary from which all modules, functions and classes
-           will be imported, for instance: globals=globals()"""
+           group - job group, is used when wait(group) is called to wait for \
+                   jobs in a given group to finish
+           globals - dictionary from which all modules, functions and classes \
+                   will be imported, for instance: globals=globals()
+        """
         self.job_server = job_server
         self.func = func
         self.depfuncs = depfuncs
@@ -390,18 +390,17 @@ class Server(object):
             callback=None, callbackargs=(), group='default', globals=None):
         """Submits function to the execution queue
 
-            func - function to be executed
-            args - tuple with arguments of the 'func'
-            depfuncs - tuple with functions which might be called from 'func'
-            modules - tuple with module names to import
-            callback - callback function which will be called with argument \
-                    list equal to callbackargs+(result,) \
-                    as soon as calculation is done
-            callbackargs - additional arguments for callback function
-            group - job group, is used when wait(group) is called to wait for
-            jobs in a given group to finish
-            globals - dict from which all modules, functions, and classes \
-                    will be imported, for instance: globals=globals()
+           func - function to be executed
+           args - tuple with arguments of the 'func'
+           depfuncs - tuple with functions which might be called from 'func'
+           modules - tuple with module names to import
+           callback - function which will be called with argument list equal \
+                   to callbackargs+(result,) as soon as calculation is done
+           callbackargs - additional arguments for callback function
+           group - job group, is used when wait(group) is called to wait for \
+                   jobs in a given group to finish
+           globals - dictionary from which all modules, functions and classes \
+                   will be imported, for instance: globals=globals()
         """
 
         # perform some checks for frequent mistakes
