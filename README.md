@@ -1,6 +1,6 @@
 ppft
 ====
-distributed and parallel python
+distributed and parallel Python
 
 About Ppft
 ----------

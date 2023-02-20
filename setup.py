@@ -40,7 +40,7 @@ except ImportError:
 setup_kwds = dict(
     name='ppft',
     version=__version__,
-    description='distributed and parallel python',
+    description='distributed and parallel Python',
     long_description = README.strip(),
     author = __author__,
     author_email = AUTHOR_EMAIL,
