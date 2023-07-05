@@ -3,15 +3,16 @@
 ppft package documentation
 ==========================
 
-.. automodule:: ppft
-..  :exclude-members: +
-
 .. toctree::
+    :hidden:
     :maxdepth: 2
-    :caption: Contents:
 
+    self
     ppft
     scripts
+
+.. automodule:: ppft
+..  :exclude-members: +
 
 Indices and tables
 ==================
