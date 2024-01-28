@@ -85,7 +85,7 @@ class BinaryDistribution(Distribution):
         return True
 
 # define dependencies
-dill_version = 'dill>=0.3.7'
+dill_version = 'dill>=0.3.8'
 # add dependencies
 depend = []
 extras = {'dill': [dill_version]}
