@@ -26,7 +26,7 @@ class AD(object):
             p = self.x**val
             return AD(self.x**val, val*self.x**(val-1)*self.dx)
         else:
-            raise TypeError("Second argumnet must be an integer")
+            raise TypeError("Second argument must be an integer")
 
     def __add__(self, val):
         if isinstance(val, AD):
