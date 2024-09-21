@@ -44,14 +44,15 @@ __version__ = version = ppc.__version__
 
 
 def preprocess(msg):
+    local = {}
     fname, fsources, imports = pickle.loads(ppc.b_(msg))
     fobjs = [compile(fsource, '<string>', 'exec') for fsource in fsources]
     for module in imports:
-        try:            
+        try:
             if not module.startswith("from ") and not module.startswith("import "):
                 module = "import " + module
-            exec(module)
-            globals().update(locals())
+            exec(module, globals(), local)
+            globals().update(local)
         except:
             print("An error has occured during the module import")
             sys.excepthook(*sys.exc_info())
@@ -78,6 +79,7 @@ class _WorkerProcess(object):
     def run(self):
         try:
             #execution cycle
+            local = {}
             while 1:
                 __fname, __fobjs = self.t.creceive(preprocess)
 
@@ -85,16 +87,16 @@ class _WorkerProcess(object):
 
                 for __fobj in __fobjs:
                     try:
-                        exec(__fobj)
-                        globals().update(locals())
+                        exec(__fobj, globals(), local)
+                        globals().update(local)
                     except:
                         print("An error has occured during the " + \
                               "function import")
                         sys.excepthook(*sys.exc_info())
 
                 __args = pickle.loads(ppc.b_(__sargs))
-            
-                __f = locals()[ppc.str_(__fname)]
+
+                __f = local[ppc.str_(__fname)]
                 try:
                     __result = __f(*__args)
                 except:
