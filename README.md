@@ -77,7 +77,7 @@ Requirements
 
 Optional requirements:
 
-* ``dill``, **>=0.3.8**
+* ``dill``, **>=0.3.9**
 
 
 Basic Usage
@@ -177,7 +177,7 @@ nodes to zero::
 Get help on the command line options for ``ppserver``::
 
     $ ppserver --help
-    Parallel Python Network Server (pp-1.7.6.8)
+    Parallel Python Network Server (pp-1.7.6.9)
     Usage: ppserver [-hdar] [-f format] [-n proto] [-c config_path] [-i interface] [-b broadcast] [-p port] [-w nworkers] [-s secret] [-t seconds] [-k seconds] [-P pid_file]
 
     Options: 
