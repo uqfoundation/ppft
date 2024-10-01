@@ -46,7 +46,7 @@ The latest released version of ``ppft`` is available from:
 Development Version
 [![Support](https://img.shields.io/badge/support-the%20UQ%20Foundation-purple.svg?style=flat&colorA=grey&colorB=purple)](http://www.uqfoundation.org/pages/donate.html)
 [![Documentation Status](https://readthedocs.org/projects/ppft/badge/?version=latest)](https://ppft.readthedocs.io/en/latest/?badge=latest)
-[![Build Status](https://travis-ci.com/uqfoundation/ppft.svg?label=build&logo=travis&branch=master)](https://travis-ci.com/github/uqfoundation/ppft)
+[![Build Status](https://app.travis-ci.com/uqfoundation/ppft.svg?label=build&logo=travis&branch=master)](https://app.travis-ci.com/github/uqfoundation/ppft)
 [![codecov](https://codecov.io/gh/uqfoundation/ppft/branch/master/graph/badge.svg)](https://codecov.io/gh/uqfoundation/ppft)
 -------------------
 You can get the latest development version with all the shiny new features at:
