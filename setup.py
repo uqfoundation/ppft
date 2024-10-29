@@ -111,9 +111,3 @@ except ImportError:
     print("WARNING: One of the following dependencies is unresolved:")
     print("    %s (optional)" % dill_version)
     print("***********************************************************\n")
-
-
-if __name__=='__main__':
-    pass
-
-# end of file
