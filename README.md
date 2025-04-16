@@ -77,7 +77,7 @@ Requirements
 
 Optional requirements:
 
-* ``dill``, **>=0.3.9**
+* ``dill``, **>=0.4.0**
 
 
 Basic Usage
