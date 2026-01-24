@@ -72,7 +72,7 @@ Requirements
 ------------
 ``ppft`` requires:
 
-* ``python`` (or ``pypy``), **>=3.9**
+* ``python`` (or ``pypy``), **>=3.10**
 * ``setuptools``, **>=42**
 
 Optional requirements:
@@ -177,7 +177,7 @@ nodes to zero::
 Get help on the command line options for ``ppserver``::
 
     $ ppserver --help
-    Parallel Python Network Server (pp-1.7.6.9)
+    Parallel Python Network Server (pp-1.7.9)
     Usage: ppserver [-hdar] [-f format] [-n proto] [-c config_path] [-i interface] [-b broadcast] [-p port] [-w nworkers] [-s secret] [-t seconds] [-k seconds] [-P pid_file]
 
     Options: 
