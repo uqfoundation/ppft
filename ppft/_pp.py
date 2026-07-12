@@ -216,7 +216,7 @@ class _RWorker(pptransport.CSocketTransport):
                    #open('/tmp/pp.debug', 'a+').write('sent: %s\n' % repr(message))
                 self.is_free = True
                 return True
-            except:
+            except Exception:
                 if SHOW_EXPECTED_EXCEPTIONS:
                     self.server.logger.debug("Exception in connect method "
                             "(possibly expected)", exc_info=True)
@@ -536,7 +536,7 @@ class Server(object):
                 try:
                     stat.rworker.send("TIME")
                     stat.time = float(stat.rworker.receive())
-                except:
+                except Exception:
                     self.__accurate_stats = False
                     stat.time = 0.0
         return self.__stats
@@ -614,7 +614,7 @@ class Server(object):
                     with %i workers" % (host, port, ncpus))
            #open('/tmp/pp.debug', 'a+').write('_RWorker(sched)\n')
             self.__scheduler()
-        except:
+        except Exception:
             if SHOW_EXPECTED_EXCEPTIONS:
                 self.logger.debug("Exception in connect1 method (possibly expected)", exc_info=True)
         finally:
@@ -691,7 +691,7 @@ class Server(object):
                 try:
                     self.__stats["local"].njobs += 1
                     ppc.start_thread("run_local",  self._run_local, task+(worker, ))
-                except:
+                except Exception:
                     pass
             else:
                 for rworker in self.__rworkers:
@@ -743,7 +743,7 @@ class Server(object):
            #open('/tmp/pp.debug', 'a+').write('_local: %s\n' % repr(sresult))
             job.finalize(sresult)
            #open('/tmp/pp.debug', 'a+').write('_local: _\n')
-        except:
+        except Exception:
             if self._exiting:
                 return
             if SHOW_EXPECTED_EXCEPTIONS:
@@ -778,7 +778,7 @@ class Server(object):
             rworker.is_free = True
             job.finalize(sresult)
            #open('/tmp/pp.debug', 'a+').write('_remote: _%s\n')
-        except:
+        except Exception:
             self.logger.debug("Task %i failed due to broken network " \
                     "connection - rescheduling",  job.tid)
             self.insert(sfunc, sargs, job)
@@ -850,7 +850,7 @@ class Server(object):
                 else:
                     os.kill(worker.pid, 9)
                     os.waitpid(worker.pid, 0)
-            except:
+            except Exception:
                 pass
 
 
